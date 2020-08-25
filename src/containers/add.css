@@ -95,6 +95,173 @@
 
   border: 1px solid #4b4b4b;
 }
+.emotions_button {
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.joy_back {
+  /* 枠_ff66ff */
+
+  position: absolute;
+  width: 145px;
+  height: 50px;
+  left: 30px;
+  top: 76px;
+
+  background: #ff66ff;
+}
+.j1_button {
+  /* 喜1 */
+
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 41px;
+  top: 84px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.j2_button {
+  /* 喜2 */
+
+  position: absolute;
+  width: 35px;
+  height: 34.67px;
+  left: 85px;
+  top: 84px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.j3_button {
+  /* 喜3 */
+
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 131px;
+  top: 84px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.angry_back {
+  /* 枠_ff3333 */
+
+  position: absolute;
+  width: 145px;
+  height: 50px;
+  left: 191px;
+  top: 76px;
+
+  background: #ff3333;
+}
+.a1_button {
+  /* 怒1 */
+
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 200px;
+  top: 84px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.a2_button {
+  /* 怒2 */
+
+  position: absolute;
+  width: 35px;
+  height: 34.67px;
+  left: 247px;
+  top: 84px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.a3_button {
+  /* 怒3 */
+
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 293px;
+  top: 84px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.sad_back {
+  /* 枠_9999ff */
+
+  position: absolute;
+  width: 145px;
+  height: 50px;
+  left: 30px;
+  top: 136px;
+
+  background: #9999ff;
+}
+.s1_button {
+  /* 哀1 */
+
+  position: absolute;
+  width: 35px;
+  height: 35.33px;
+  left: 40px;
+  top: 144px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.s2_button {
+  /* 哀2 */
+
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 85px;
+  top: 145px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.s3_button {
+  /* 哀3 */
+
+  position: absolute;
+  width: 35px;
+  height: 35.33px;
+  left: 131px;
+  top: 144px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.happy_back {
+  /* 枠_cccc33 */
+
+  position: absolute;
+  width: 145px;
+  height: 50px;
+  left: 191px;
+  top: 136px;
+
+  background: #cccc33;
+}
+.h1_button {
+  /* 楽1 */
+
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  left: 201px;
+  top: 144px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.h2_button {
+  /* 楽2 */
+
+  position: absolute;
+  width: 35px;
+  height: 34.67px;
+  left: 247px;
+  top: 144px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.h3_button {
+  /* 楽3 */
+
+  position: absolute;
+  width: 35px;
+  height: 34.67px;
+  left: 295px;
+  top: 144px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
 .item_youremotion {
   /* your emotion */
 
