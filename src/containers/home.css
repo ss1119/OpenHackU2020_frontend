@@ -29,8 +29,8 @@
   position: absolute;
   width: 112px;
   height: 84px;
-  left: 131px;
-  top: 22px;
+  left: 123px;
+  top: 26px;
 
   font-family: Roboto;
   font-style: normal;
@@ -69,24 +69,4 @@
   border-radius: 50%;
 
   background: #efefef;
-}
-.add_button_text {
-  /* add */
-
-  position: absolute;
-  width: 40px;
-  height: 27.45px;
-  left: 163px;
-  top: 521.76px;
-
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 24px;
-  line-height: 28px;
-  display: flex;
-  align-items: flex-end;
-  text-align: center;
-
-  color: #ffffff;
 }
