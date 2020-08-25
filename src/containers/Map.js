@@ -1,38 +1,26 @@
 import React from "react";
-import ReactGoogleMapLoader from "react-google-maps-loader";
-import ReactGoogleMap from "react-google-map";
-
-const bnCoord = {
-  lat: 44.597923,
-  lng: 0.873799,
-};
+import styled from "styled-components";
+import GoogleMapReact from "google-map-react";
 
 class Map extends React.Component {
   render() {
+    const GoogleMapWrapper = styled.div`
+      height: 100vh;
+      width: 100%;
+    `;
     return (
-      <ReactGoogleMapLoader
-        params={{
-          key: "AIzaSyDiQ-72-0nMq9ZoSNyYMltV8FozPAO3Glk",
-        }}
-        style={{ height: "100%" }}
-        render={(googleMaps) => {
-          return (
-            googleMaps && (
-              <ReactGoogleMap
-                googleMaps={googleMaps}
-                coordinates={[
-                  {
-                    title: "Bosc Nègre",
-                    position: bnCoord,
-                  },
-                ]}
-                center={bnCoord}
-                zoom={8}
-              />
-            )
-          );
-        }}
-      />
+      <GoogleMapWrapper>
+        <GoogleMapReact
+          bootstrapURLKeys={{
+            key: "AIzaSyDiQ-72-0nMq9ZoSNyYMltV8FozPAO3Glk",
+          }}
+          defaultCenter={{
+            lat: 43.0582954,
+            lng: 141.3466919,
+          }}
+          defaultZoom={15}
+        ></GoogleMapReact>
+      </GoogleMapWrapper>
     );
   }
 }

@@ -10,7 +10,7 @@ export class App extends React.Component {
       <>
         <Router>
           <Switch>
-            <Route exact path="/" compornent={Map} />
+            <Route exact path="/" component={Map} />
           </Switch>
         </Router>
       </>
