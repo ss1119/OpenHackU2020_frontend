@@ -15,6 +15,19 @@ import H2 from "./face/happy/H2.png";
 import H3 from "./face/happy/H3.png";
 
 class Popup extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      choice: false,
+      your_emotion: "NONE",
+    };
+  }
+
+  choice(emotion) {
+    this.setState({ choice: true });
+    this.setState({ your_emotion: emotion });
+  }
+
   render() {
     return (
       <div className="popup">
@@ -23,24 +36,91 @@ class Popup extends React.Component {
           <div className="line_emotion"></div>
           <div className="emotions_button">
             <div className="joy_back"></div>
-            <img src={J1} className="j1_button"></img>
-            <img src={J2} className="j2_button"></img>
-            <img src={J3} className="j3_button"></img>
+            <img
+              src={J1}
+              className="j1_button"
+              onClick={this.choice.bind(this, "J1")}
+              alt="喜"
+            ></img>
+            <img
+              src={J2}
+              className="j2_button"
+              onClick={this.choice.bind(this, "J2")}
+              alt="喜"
+            ></img>
+            <img
+              src={J3}
+              className="j3_button"
+              onClick={this.choice.bind(this, "J3")}
+              alt="喜"
+            ></img>
             <div className="angry_back"></div>
-            <img src={A1} className="a1_button"></img>
-            <img src={A2} className="a2_button"></img>
-            <img src={A3} className="a3_button"></img>
+            <img
+              src={A1}
+              className="a1_button"
+              onClick={this.choice.bind(this, "A1")}
+              alt="怒"
+            ></img>
+            <img
+              src={A2}
+              className="a2_button"
+              onClick={this.choice.bind(this, "A2")}
+              alt="怒"
+            ></img>
+            <img
+              src={A3}
+              className="a3_button"
+              onClick={this.choice.bind(this, "A3")}
+              alt="怒"
+            ></img>
             <div className="sad_back"></div>
-            <img src={S1} className="s1_button"></img>
-            <img src={S2} className="s2_button"></img>
-            <img src={S3} className="s3_button"></img>
+            <img
+              src={S1}
+              className="s1_button"
+              onClick={this.choice.bind(this, "S1")}
+              alt="哀"
+            ></img>
+            <img
+              src={S2}
+              className="s2_button"
+              onClick={this.choice.bind(this, "S2")}
+              alt="哀"
+            ></img>
+            <img
+              src={S3}
+              className="s3_button"
+              onClick={this.choice.bind(this, "S3")}
+              alt="哀"
+            ></img>
             <div className="happy_back"></div>
-            <img src={H1} className="h1_button"></img>
-            <img src={H2} className="h2_button"></img>
-            <img src={H3} className="h3_button"></img>
+            <img
+              src={H1}
+              className="h1_button"
+              onClick={this.choice.bind(this, "H1")}
+              alt="楽"
+            ></img>
+            <img
+              src={H2}
+              className="h2_button"
+              onClick={this.choice.bind(this, "H2")}
+              alt="楽"
+            ></img>
+            <img
+              src={H3}
+              className="h3_button"
+              onClick={this.choice.bind(this, "H3")}
+              alt="楽"
+            ></img>
           </div>
           <div className="item_youremotion">your emotion</div>
           <div className="line_youremotion"></div>
+          {this.state.choice ? (
+            <img
+              src={this.state.your_emotion}
+              className="choice_emotion"
+              alt="your emotion"
+            ></img>
+          ) : null}
           <div className="item_comment">comment</div>
           <div className="line_comment"></div>
           <input name="comment" type="text" className="comment_area" />
@@ -48,6 +128,7 @@ class Popup extends React.Component {
             src={BackButton}
             onClick={this.props.closePopup}
             className="back_button"
+            alt="戻る"
           ></img>
           <div className="add_button" onClick={this.props.closePopup}></div>
           <div className="add_button_text" onClick={this.props.closePopup}>

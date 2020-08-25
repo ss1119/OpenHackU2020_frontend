@@ -298,6 +298,13 @@
   border: 1px dashed #4b4b4b;
   transform: rotate(-0.24deg);
 }
+.choice_emotion {
+  position: absolute;
+  width: 35px;
+  height: 34.67px;
+  left: 282px;
+  top: 195px;
+}
 .item_comment {
   /* comment */
 
@@ -329,6 +336,8 @@
 }
 .comment_area {
   /* コメント記入欄 */
+
+  font-size: 20px;
 
   position: absolute;
   width: 320px;
