@@ -1,27 +1,34 @@
 import React from "react";
-import styled from "styled-components";
-import GoogleMapReact from "google-map-react";
+import { ReactComponent as MapContent } from "../map.svg";
 
 class Map extends React.Component {
-  render() {
-    const GoogleMapWrapper = styled.div`
-      height: 100vh;
-      width: 100%;
-    `;
-    return (
-      <GoogleMapWrapper>
-        <GoogleMapReact
-          bootstrapURLKeys={{
-            key: "AIzaSyDiQ-72-0nMq9ZoSNyYMltV8FozPAO3Glk",
-          }}
-          defaultCenter={{
-            lat: 43.0582954,
-            lng: 141.3466919,
-          }}
-          defaultZoom={15}
-        ></GoogleMapReact>
-      </GoogleMapWrapper>
+  state = {
+    lat: null,
+    lng: null,
+    colors: { prefecture: "TOKYO", color: "#ff66ff" },
+  };
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
     );
+
+    this.setColors();
+  }
+  render() {
+    return <MapContent id="MapStyle" />;
+  }
+
+  setColors() {
+    document.getElementById("MapStyle").getElementById("OSAKA").style.fill =
+      "#ff66ff";
   }
 }
 
