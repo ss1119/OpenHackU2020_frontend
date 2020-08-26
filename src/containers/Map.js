@@ -1,39 +1,34 @@
 import React from "react";
-import ReactGoogleMapLoader from "react-google-maps-loader";
-import ReactGoogleMap from "react-google-map";
-
-const bnCoord = {
-  lat: 44.597923,
-  lng: 0.873799,
-};
+import { ReactComponent as MapContent } from "../map.svg";
 
 class Map extends React.Component {
-  render() {
-    return (
-      <ReactGoogleMapLoader
-        params={{
-          key: "AIzaSyDiQ-72-0nMq9ZoSNyYMltV8FozPAO3Glk",
-        }}
-        style={{ height: "100%" }}
-        render={(googleMaps) => {
-          return (
-            googleMaps && (
-              <ReactGoogleMap
-                googleMaps={googleMaps}
-                coordinates={[
-                  {
-                    title: "Bosc Nègre",
-                    position: bnCoord,
-                  },
-                ]}
-                center={bnCoord}
-                zoom={8}
-              />
-            )
-          );
-        }}
-      />
+  state = {
+    lat: null,
+    lng: null,
+    colors: { prefecture: "TOKYO", color: "#ff66ff" },
+  };
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
     );
+
+    this.setColors();
+  }
+  render() {
+    return <MapContent id="MapStyle" />;
+  }
+
+  setColors() {
+    document.getElementById("MapStyle").getElementById("OSAKA").style.fill =
+      "#ff66ff";
   }
 }
 
