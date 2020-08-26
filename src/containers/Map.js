@@ -1,5 +1,6 @@
 import React from "react";
 import { ReactComponent as MapContent } from "../map.svg";
+import styled from "styled-components";
 
 class Map extends React.Component {
   state = {
@@ -23,7 +24,15 @@ class Map extends React.Component {
     this.setColors();
   }
   render() {
-    return <MapContent id="MapStyle" />;
+    const MapArea = styled.div`
+      position: absolute;
+      left: 37%;
+    `;
+    return (
+      <MapArea>
+        <MapContent id="MapStyle" />
+      </MapArea>
+    );
   }
 
   setColors() {
