@@ -116,7 +116,11 @@ class Popup extends React.Component {
           <div className="line_youremotion"></div>
           {this.state.choice ? (
             <img
-              src={this.state.your_emotion}
+              src={
+                `${process.env.PUBLIC_URL}/face/` +
+                this.state.your_emotion +
+                `.png`
+              }
               className="choice_emotion"
               alt="your emotion"
             ></img>
