@@ -20,7 +20,6 @@ class Map extends React.Component {
         console.log(err);
       }
     );
-
     this.setColors();
   }
   render() {
