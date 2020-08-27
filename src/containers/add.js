@@ -1,18 +1,5 @@
 import React from "react";
 import "./add.css";
-import BackButton from "./Button/戻るボタン.png";
-import J1 from "./face/joy/J1.png";
-import J2 from "./face/joy/J2.png";
-import J3 from "./face/joy/J3.png";
-import A1 from "./face/angry/A1.png";
-import A2 from "./face/angry/A2.png";
-import A3 from "./face/angry/A3.png";
-import S1 from "./face/sad/S1.png";
-import S2 from "./face/sad/S2.png";
-import S3 from "./face/sad/S3.png";
-import H1 from "./face/happy/H1.png";
-import H2 from "./face/happy/H2.png";
-import H3 from "./face/happy/H3.png";
 
 class Popup extends React.Component {
   constructor() {
@@ -37,76 +24,76 @@ class Popup extends React.Component {
           <div className="emotions_button">
             <div className="joy_back"></div>
             <img
-              src={J1}
+              src={`${process.env.PUBLIC_URL}/face/J1.png`}
               className="j1_button"
               onClick={this.choice.bind(this, "J1")}
               alt="喜"
             ></img>
             <img
-              src={J2}
+              src={`${process.env.PUBLIC_URL}/face/J2.png`}
               className="j2_button"
               onClick={this.choice.bind(this, "J2")}
               alt="喜"
             ></img>
             <img
-              src={J3}
+              src={`${process.env.PUBLIC_URL}/face/J3.png`}
               className="j3_button"
               onClick={this.choice.bind(this, "J3")}
               alt="喜"
             ></img>
             <div className="angry_back"></div>
             <img
-              src={A1}
+              src={`${process.env.PUBLIC_URL}/face/J1.png`}
               className="a1_button"
               onClick={this.choice.bind(this, "A1")}
               alt="怒"
             ></img>
             <img
-              src={A2}
+              src={`${process.env.PUBLIC_URL}/face/A2.png`}
               className="a2_button"
               onClick={this.choice.bind(this, "A2")}
               alt="怒"
             ></img>
             <img
-              src={A3}
+              src={`${process.env.PUBLIC_URL}/face/A3.png`}
               className="a3_button"
               onClick={this.choice.bind(this, "A3")}
               alt="怒"
             ></img>
             <div className="sad_back"></div>
             <img
-              src={S1}
+              src={`${process.env.PUBLIC_URL}/face/S1.png`}
               className="s1_button"
               onClick={this.choice.bind(this, "S1")}
               alt="哀"
             ></img>
             <img
-              src={S2}
+              src={`${process.env.PUBLIC_URL}/face/S2.png`}
               className="s2_button"
               onClick={this.choice.bind(this, "S2")}
               alt="哀"
             ></img>
             <img
-              src={S3}
+              src={`${process.env.PUBLIC_URL}/face/S3.png`}
               className="s3_button"
               onClick={this.choice.bind(this, "S3")}
               alt="哀"
             ></img>
             <div className="happy_back"></div>
             <img
-              src={H1}
+              src={`${process.env.PUBLIC_URL}/face/H1.png`}
               className="h1_button"
               onClick={this.choice.bind(this, "H1")}
               alt="楽"
             ></img>
             <img
-              src={H2}
+              src={`${process.env.PUBLIC_URL}/face/H2.png`}
               className="h2_button"
               onClick={this.choice.bind(this, "H2")}
               alt="楽"
             ></img>
             <img
-              src={H3}
+              src={`${process.env.PUBLIC_URL}/face/H3.png`}
               className="h3_button"
               onClick={this.choice.bind(this, "H3")}
               alt="楽"
@@ -129,7 +116,7 @@ class Popup extends React.Component {
           <div className="line_comment"></div>
           <input name="comment" type="text" className="comment_area" />
           <img
-            src={BackButton}
+            src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
             onClick={this.props.closePopup}
             className="back_button"
             alt="戻る"
