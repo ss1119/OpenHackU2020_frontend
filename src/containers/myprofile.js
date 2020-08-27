@@ -30,11 +30,15 @@ class MyProfile extends React.Component {
         <div className="post_area">
           <div className="post_title">post</div>
           <Post
+            //背景色(感情から求めるようにできる？)
             R={"255"}
             G={"51"}
             B={"51"}
+            //感情
             emotion={"A1"}
+            //返信の件数
             num={"1"}
+            //自分の投稿か否か(削除ボタンの表示判断)
             mine={true}
           />
           <br />
