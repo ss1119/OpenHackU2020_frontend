@@ -1,4 +1,5 @@
 import React from "react";
+import Post from "./postView.js";
 import "./myprofile.css";
 
 class MyProfile extends React.Component {
@@ -28,6 +29,25 @@ class MyProfile extends React.Component {
         </div>
         <div className="post_area">
           <div className="post_title">post</div>
+          <Post
+            R={"255"}
+            G={"51"}
+            B={"51"}
+            emotion={"A1"}
+            num={"1"}
+            mine={true}
+          />
+          <br />
+          <br />
+          <br />
+          <Post
+            R={"153"}
+            G={"153"}
+            B={"255"}
+            emotion={"S3"}
+            num={"0"}
+            mine={true}
+          />
         </div>
       </div>
     );
