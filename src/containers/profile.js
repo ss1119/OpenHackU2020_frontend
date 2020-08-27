@@ -1,8 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import "./profile.css";
 import "./home.css";
+import styled from "styled-components";
 import AddPage from "./add.js";
-import Map from "./Map.js";
 import { Link } from "react-router-dom";
 
 class Home extends React.Component {
@@ -21,20 +21,19 @@ class Home extends React.Component {
           <div className="under_back_rectangle"></div>
           <div className="under_back_ellipse"></div>
         </div>
-        <Map />
         <AddPage />
-        <img
-          src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_グレー.png`}
-          className="home_button"
-          alt="home"
-        ></img>
-        <Link to="/profile">
+        <Link to="/">
           <img
-            src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_白.png`}
-            className="profile_button"
-            alt="profile"
+            src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_白.png`}
+            className="home_button"
+            alt="home"
           ></img>
         </Link>
+        <img
+          src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_グレー.png`}
+          className="profile_button"
+          alt="profile"
+        ></img>
       </HomeArea>
     );
   }
