@@ -11,8 +11,7 @@ class Popup extends React.Component {
   }
 
   choice(emotion) {
-    this.setState({ choice: true });
-    this.setState({ your_emotion: emotion });
+    this.setState({ choice: true, your_emotion: emotion });
   }
 
   render() {
@@ -43,7 +42,7 @@ class Popup extends React.Component {
             ></img>
             <div className="angry_back"></div>
             <img
-              src={`${process.env.PUBLIC_URL}/face/J1.png`}
+              src={`${process.env.PUBLIC_URL}/face/A1.png`}
               className="a1_button"
               onClick={this.choice.bind(this, "A1")}
               alt="怒"

@@ -4,7 +4,7 @@
   position: absolute;
   width: 375px;
   height: 110px;
-  left: 37%;
+  left: 0%;
   top: 0px;
 
   background: #efefef;
@@ -48,7 +48,7 @@
   position: absolute;
   width: 375px;
   height: 110px;
-  left: 37%;
+  left: 0%;
   bottom: 0px;
 }
 .under_back_rectangle {
@@ -57,6 +57,7 @@
   position: absolute;
   width: 375px;
   height: 55px;
+  bottom: 0px;
   background: #efefef;
 }
 .under_back_ellipse {
@@ -67,5 +68,24 @@
   height: 120px;
   border-radius: 50%;
   left: 125px;
+  bottom: -33px;
   background: #efefef;
+}
+.profile_button {
+  /* 横顔アイコン*/
+
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 76%;
+  bottom: 7px;
+}
+.home_button {
+  /* 家のアイコン素材*/
+
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 13%;
+  bottom: 7px;
 }
