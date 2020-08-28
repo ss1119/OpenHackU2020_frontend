@@ -1,8 +1,22 @@
 import React from "react";
 import Post from "./postView.js";
+import Edit from "./edit.js";
 import "./myprofile.css";
 
 class MyProfile extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      showPopup: false,
+    };
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup,
+    });
+  }
+
   render() {
     return (
       <div>
@@ -22,6 +36,7 @@ class MyProfile extends React.Component {
             <div className="name">hanako</div>
             <img
               src={`${process.env.PUBLIC_URL}/Button/editボタン.png`}
+              onClick={this.togglePopup.bind(this)}
               className="edit_icon"
               alt="edit"
             ></img>
@@ -53,6 +68,9 @@ class MyProfile extends React.Component {
             mine={true}
           />
         </div>
+        {this.state.showPopup ? (
+          <Edit closePopup={this.togglePopup.bind(this)} />
+        ) : null}
       </div>
     );
   }

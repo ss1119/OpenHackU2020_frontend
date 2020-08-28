@@ -29,11 +29,13 @@ class Profile extends React.Component {
             alt="home"
           ></img>
         </Link>
-        <img
-          src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_グレー.png`}
-          className="profile_button"
-          alt="profile"
-        ></img>
+        <Link to="/profile">
+          <img
+            src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_グレー.png`}
+            className="profile_button"
+            alt="profile"
+          ></img>
+        </Link>
         <AddPage />
       </HomeArea>
     );
