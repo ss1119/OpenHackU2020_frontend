@@ -21,12 +21,12 @@ class SignUp extends React.Component {
               <img
                 src={`${process.env.PUBLIC_URL}/Button/人物アイコン.png`}
                 className="signupman_icon"
-                alt="profile"
+                alt="sign up"
               ></img>
               <div className="signup_title">sign up</div>
             </div>
             <input
-              name="newName"
+              name="Name"
               type="text"
               placeholder="your name"
               className="signup_form"
