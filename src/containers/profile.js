@@ -22,7 +22,7 @@ class Profile extends React.Component {
           <div className="under_back_rectangle"></div>
           <div className="under_back_ellipse"></div>
         </div>
-        <Link to="/">
+        <Link to="/home">
           <img
             src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_白.png`}
             className="home_button"

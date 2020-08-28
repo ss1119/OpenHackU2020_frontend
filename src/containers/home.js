@@ -22,7 +22,7 @@ class Home extends React.Component {
           <div className="under_back_ellipse"></div>
         </div>
         <Map />
-        <Link to="/">
+        <Link to="/home">
           <img
             src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_グレー.png`}
             className="home_button"
