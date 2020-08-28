@@ -1,11 +1,11 @@
 import React from "react";
-import styled from "styled-components";
 import "./home.css";
+import styled from "styled-components";
 import AddPage from "./add.js";
-import Map from "./Map.js";
+import MyProfile from "./myprofile.js";
 import { Link } from "react-router-dom";
 
-class Home extends React.Component {
+class Profile extends React.Component {
   render() {
     const HomeArea = styled.div`
       width: 375px;
@@ -17,21 +17,21 @@ class Home extends React.Component {
           <div className="title_area"></div>
           <div className="title_text">title</div>
         </div>
+        <MyProfile />
         <div className="under_back">
           <div className="under_back_rectangle"></div>
           <div className="under_back_ellipse"></div>
         </div>
-        <Map />
         <Link to="/home">
           <img
-            src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_グレー.png`}
+            src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_白.png`}
             className="home_button"
             alt="home"
           ></img>
         </Link>
         <Link to="/profile">
           <img
-            src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_白.png`}
+            src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_グレー.png`}
             className="profile_button"
             alt="profile"
           ></img>
@@ -42,4 +42,4 @@ class Home extends React.Component {
   }
 }
 
-export default Home;
+export default Profile;
