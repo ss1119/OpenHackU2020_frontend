@@ -21,9 +21,7 @@ class Edit extends React.Component {
             className="edit_form"
           ></input>
           <div className="OK_button" onClick={this.props.closePopup}>
-            <div className="OK_button_text" onClick={this.props.closePopup}>
-              OK
-            </div>
+            <div className="OK_button_text">OK</div>
           </div>
         </div>
       </div>

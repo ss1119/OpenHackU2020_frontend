@@ -1,19 +1,26 @@
 import React from "react";
 import Post from "./postView.js";
 import Edit from "./edit.js";
+import Delete from "./delete.js";
 import "./myprofile.css";
 
 class MyProfile extends React.Component {
   constructor() {
     super();
     this.state = {
-      showPopup: false,
+      showPopup_edit: false,
+      showPopup_delete: false,
     };
   }
 
-  togglePopup() {
+  togglePopup_edit() {
     this.setState({
-      showPopup: !this.state.showPopup,
+      showPopup_edit: !this.state.showPopup_edit,
+    });
+  }
+  togglePopup_delete() {
+    this.setState({
+      showPopup_delete: !this.state.showPopup_delete,
     });
   }
 
@@ -36,7 +43,7 @@ class MyProfile extends React.Component {
             <div className="name">hanako</div>
             <img
               src={`${process.env.PUBLIC_URL}/Button/editボタン.png`}
-              onClick={this.togglePopup.bind(this)}
+              onClick={this.togglePopup_edit.bind(this)}
               className="edit_icon"
               alt="edit"
             ></img>
@@ -55,6 +62,10 @@ class MyProfile extends React.Component {
             num={"1"}
             //自分の投稿か否か(削除ボタンの表示判断)
             mine={true}
+            //POPUPのON/OFFを切り替える関数を渡す
+            togglePopup={() => {
+              this.togglePopup_delete();
+            }}
           />
           <br />
           <br />
@@ -66,10 +77,16 @@ class MyProfile extends React.Component {
             emotion={"S3"}
             num={"0"}
             mine={true}
+            togglePopup={() => {
+              this.togglePopup_delete();
+            }}
           />
         </div>
-        {this.state.showPopup ? (
-          <Edit closePopup={this.togglePopup.bind(this)} />
+        {this.state.showPopup_edit ? (
+          <Edit closePopup={this.togglePopup_edit.bind(this)} />
+        ) : null}
+        {this.state.showPopup_delete ? (
+          <Delete closePopup={this.togglePopup_delete.bind(this)} />
         ) : null}
       </div>
     );

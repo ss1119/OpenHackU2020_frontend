@@ -11,8 +11,7 @@ class Popup extends React.Component {
   }
 
   choice(emotion) {
-    this.setState({ choice: true });
-    this.setState({ your_emotion: emotion });
+    this.setState({ choice: true, your_emotion: emotion });
   }
 
   render() {

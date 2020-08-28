@@ -29,6 +29,15 @@ const postView = (props) => {
       {props.mine ? (
         <img
           src={`${process.env.PUBLIC_URL}/Button/削除ボタン.png`}
+          onClick={() => {
+            props.togglePopup(
+              props.R,
+              props.G,
+              props.B,
+              props.emotion,
+              props.num
+            );
+          }}
           className="post_garbage"
           alt="delete"
         ></img>
