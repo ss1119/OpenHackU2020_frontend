@@ -4,7 +4,10 @@
   position: absolute;
   width: 100px;
   height: 100px;
-  left: 46.8%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
   bottom: 1%;
 
   border-radius: 50%;
@@ -18,8 +21,11 @@
   position: absolute;
   width: 53px;
   height: 113px;
-  left: 48%;
-  bottom: 1.5%;
+  left: 43%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  bottom: 1%;
 
   font-family: Roboto;
   font-style: normal;

@@ -25,7 +25,10 @@ class Map extends React.Component {
   render() {
     const MapArea = styled.div`
       position: absolute;
-      left: 37%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      -webkit-transform: translate(-50%, 0%);
+      -ms-transform: translate(-50%, 0%);
     `;
     return (
       <MapArea>

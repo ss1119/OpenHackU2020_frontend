@@ -13,29 +13,30 @@ class Home extends React.Component {
     `;
     return (
       <HomeArea>
+        <Map />
         <div className="title_back">
           <div className="title_area"></div>
           <div className="title_text">title</div>
         </div>
         <div className="under_back">
-          <div className="under_back_rectangle"></div>
-          <div className="under_back_ellipse"></div>
+          <div className="under_back_rectangle">
+            <div className="under_back_ellipse"></div>
+            <Link to="/home">
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_グレー.png`}
+                className="home_button"
+                alt="home"
+              ></img>
+            </Link>
+            <Link to="/profile">
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_白.png`}
+                className="profile_button"
+                alt="profile"
+              ></img>
+            </Link>
+          </div>
         </div>
-        <Map />
-        <Link to="/home">
-          <img
-            src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_グレー.png`}
-            className="home_button"
-            alt="home"
-          ></img>
-        </Link>
-        <Link to="/profile">
-          <img
-            src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_白.png`}
-            className="profile_button"
-            alt="profile"
-          ></img>
-        </Link>
         <AddPage />
       </HomeArea>
     );
