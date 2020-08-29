@@ -147,12 +147,8 @@ class Add extends React.Component {
   render() {
     return (
       <div>
-        <a
-          onClick={this.togglePopup.bind(this)}
-          className="plus_button_area"
-        ></a>
-        <a onClick={this.togglePopup.bind(this)} className="plus_button_text">
-          +
+        <a onClick={this.togglePopup.bind(this)} className="plus_button_area">
+          <a className="plus_button_text">+</a>
         </a>
         {this.state.showPopup ? (
           <Popup text="" closePopup={this.togglePopup.bind(this)} />

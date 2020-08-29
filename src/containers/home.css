@@ -4,7 +4,10 @@
   position: absolute;
   width: 375px;
   height: 110px;
-  left: 37%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
   top: 0px;
 
   background: #efefef;
@@ -16,7 +19,10 @@
   position: absolute;
   width: 225px;
   height: 73px;
-  left: 75px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
   top: 28px;
 
   background: #ffffff;
@@ -29,7 +35,10 @@
   position: absolute;
   width: 112px;
   height: 84px;
-  left: 123px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
   top: 26px;
 
   font-family: Roboto;
@@ -48,7 +57,10 @@
   position: absolute;
   width: 375px;
   height: 110px;
-  left: 37%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
   bottom: 0px;
 }
 .under_back_rectangle {
@@ -64,10 +76,13 @@
   /* Ellipse 1 */
 
   position: absolute;
-  width: 120px;
-  height: 120px;
+  width: 115px;
+  height: 115px;
   border-radius: 50%;
-  left: 35%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
   bottom: 0%;
   background: #efefef;
 }
@@ -77,8 +92,11 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  left: 58%;
-  bottom: 1%;
+  left: 83%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  bottom: 10%;
 }
 .home_button {
   /* 家のアイコン素材*/
@@ -86,6 +104,9 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  left: 40%;
-  bottom: 1%;
+  left: 17%;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+  bottom: 10%;
 }

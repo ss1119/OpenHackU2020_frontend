@@ -19,23 +19,24 @@ class Profile extends React.Component {
         </div>
         <MyProfile />
         <div className="under_back">
-          <div className="under_back_rectangle"></div>
-          <div className="under_back_ellipse"></div>
+          <div className="under_back_rectangle">
+            <div className="under_back_ellipse"></div>
+            <Link to="/home">
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_白.png`}
+                className="home_button"
+                alt="home"
+              ></img>
+            </Link>
+            <Link to="/profile">
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_グレー.png`}
+                className="profile_button"
+                alt="profile"
+              ></img>
+            </Link>
+          </div>
         </div>
-        <Link to="/home">
-          <img
-            src={`${process.env.PUBLIC_URL}/Button/家のアイコン素材_白.png`}
-            className="home_button"
-            alt="home"
-          ></img>
-        </Link>
-        <Link to="/profile">
-          <img
-            src={`${process.env.PUBLIC_URL}/Button/横顔アイコン_グレー.png`}
-            className="profile_button"
-            alt="profile"
-          ></img>
-        </Link>
         <AddPage />
       </HomeArea>
     );
