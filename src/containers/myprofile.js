@@ -70,6 +70,7 @@ class MyProfile extends React.Component {
           <br />
           <br />
           <br />
+          <br />
           <Post
             R={"153"}
             G={"153"}

@@ -148,7 +148,11 @@ class Add extends React.Component {
     return (
       <div>
         <a onClick={this.togglePopup.bind(this)} className="plus_button_area">
-          <a className="plus_button_text">+</a>
+          <img
+            src={`${process.env.PUBLIC_URL}/Button/+.png`}
+            className="plus_button_icon"
+            alt="add"
+          ></img>
         </a>
         {this.state.showPopup ? (
           <Popup text="" closePopup={this.togglePopup.bind(this)} />
