@@ -7,13 +7,10 @@ class Popup extends React.Component {
     this.state = {
       choice: false,
       your_emotion: "NONE",
+      selected_emotion_id: null,
+      comment: "",
     };
   }
-
-  choice(emotion) {
-    this.setState({ choice: true, your_emotion: emotion });
-  }
-
   render() {
     return (
       <div className="popup">
@@ -113,21 +110,40 @@ class Popup extends React.Component {
           ) : null}
           <div className="item_comment">comment</div>
           <div className="line_comment"></div>
-          <input name="comment" type="text" className="comment_area" />
+          <textarea
+            name="comment"
+            type="text"
+            className="comment_area"
+            maxLength="100"
+            value={this.state.comment}
+            onChange={this.onChangeComment.bind(this)}
+          ></textarea>
           <img
             src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
             onClick={this.props.closePopup}
             className="back_button"
             alt="戻る"
           ></img>
-          <div className="add_button" onClick={this.props.closePopup}></div>
-          <div className="add_button_text" onClick={this.props.closePopup}>
+          <button
+            className="add_button"
+            onClick={(this.onClickAddButton.bind(this), this.props.closePopup)}
+          >
             add
-          </div>
+          </button>
         </div>
       </div>
     );
   }
+
+  choice(emotion) {
+    this.setState({ choice: true, your_emotion: emotion });
+  }
+
+  onChangeComment(e) {
+    this.setState({ comment: e.target.value });
+  }
+
+  onClickAddButton() {}
 }
 
 class Add extends React.Component {

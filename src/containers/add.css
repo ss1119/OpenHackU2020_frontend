@@ -330,6 +330,9 @@
   /* コメント記入欄 */
 
   font-size: 20px;
+  display: table-cell;
+  vertical-align: top;
+  white-space: normal;
 
   position: absolute;
   width: 320px;
@@ -355,26 +358,13 @@
   top: 510px;
 }
 .add_button {
-  /* Rectangle 10 */
+  /* addボタン */
 
   position: absolute;
   width: 158px;
   height: 50px;
   left: 104px;
   top: 510px;
-
-  background: #4b4b4b;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 100px;
-}
-.add_button_text {
-  /* add */
-
-  position: absolute;
-  width: 40px;
-  height: 27.45px;
-  left: 160px;
-  top: 521.76px;
 
   font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
@@ -384,6 +374,10 @@
   display: flex;
   align-items: flex-end;
   text-align: center;
-
+  padding: 10px 54px 10px 55px;
   color: #ffffff;
+
+  background: #4b4b4b;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
 }
