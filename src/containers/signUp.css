@@ -61,7 +61,7 @@
   font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 40px;
   line-height: 56px;
   display: flex;
   align-items: flex-end;
@@ -77,6 +77,7 @@
   height: 66px;
   left: 15px;
   top: 164px;
+  text-align: center;
 
   background: #ffffff;
   border: 1px solid rgba(75, 75, 75, 0.3);
@@ -95,13 +96,19 @@
   align-items: flex-end;
 }
 .OK_button {
-  /* 枠_4b4b4b */
+  /* OKボタン */
 
   position: absolute;
   width: 158px;
   height: 50px;
   left: 104px;
   top: 251px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  color: #ffffff;
 
   background: #4b4b4b;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

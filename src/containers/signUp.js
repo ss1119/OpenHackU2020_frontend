@@ -4,6 +4,12 @@ import "./signUp.css";
 import { Link } from "react-router-dom";
 
 class SignUp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: "",
+    };
+  }
   render() {
     return (
       <div>
@@ -26,20 +32,32 @@ class SignUp extends React.Component {
               <div className="signup_title">sign up</div>
             </div>
             <input
-              name="Name"
+              value={this.state.userName}
               type="text"
+              onChange={this.onChengeUserName.bind(this)}
               placeholder="your name"
               className="signup_form"
             ></input>
-            <Link to="/home">
-              <div className="OK_button">
-                <div className="OK_button_text">OK</div>
-              </div>
-            </Link>
+            <button className="OK_button" onClick={this.onLogIn.bind(this)}>
+              OK
+            </button>
           </div>
         </div>
       </div>
     );
+  }
+  onChengeUserName(e) {
+    this.setState({
+      userName: e.target.value,
+    });
+  }
+
+  onLogIn() {
+    if (this.state.userName === "") {
+      alert("名前を入力してください");
+    } else {
+      this.props.history.push("/home");
+    }
   }
 }
 
