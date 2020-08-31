@@ -14,8 +14,9 @@ class Profile extends React.Component {
     return (
       <HomeArea>
         <div className="title_back">
-          <div className="title_area"></div>
-          <div className="title_text">title</div>
+          <div className="title_area">
+            <div className="title_text">title</div>
+          </div>
         </div>
         <MyProfile />
         <div className="under_back">

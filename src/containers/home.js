@@ -15,8 +15,9 @@ class Home extends React.Component {
       <HomeArea>
         <Map />
         <div className="title_back">
-          <div className="title_area"></div>
-          <div className="title_text">title</div>
+          <div className="title_area">
+            <div className="title_text">title</div>
+          </div>
         </div>
         <div className="under_back">
           <div className="under_back_rectangle">

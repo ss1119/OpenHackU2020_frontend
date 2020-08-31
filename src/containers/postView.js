@@ -8,14 +8,6 @@ const postView = (props) => {
       style={{
         background:
           "rgba(" + props.R + "," + props.G + "," + props.B + ", 0.3)",
-        shadow:
-          "0px 4px 4px rgba(" +
-          props.R +
-          "," +
-          props.G +
-          "," +
-          props.B +
-          ", 0.25)",
         border:
           "1px solid rgba(" + props.R + "," + props.G + "," + props.B + ", 1)",
       }}
@@ -30,13 +22,7 @@ const postView = (props) => {
         <img
           src={`${process.env.PUBLIC_URL}/Button/削除ボタン.png`}
           onClick={() => {
-            props.togglePopup(
-              props.R,
-              props.G,
-              props.B,
-              props.emotion,
-              props.num
-            );
+            props.togglePopup();
           }}
           className="post_garbage"
           alt="delete"
