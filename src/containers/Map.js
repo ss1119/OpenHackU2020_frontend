@@ -1,6 +1,7 @@
 import React from "react";
 import { ReactComponent as MapContent } from "../map.svg";
 import styled from "styled-components";
+import { get } from "../api/Request";
 
 class Map extends React.Component {
   state = {
@@ -9,6 +10,9 @@ class Map extends React.Component {
     colors: { prefecture: "TOKYO", color: "#ff66ff" },
   };
   componentDidMount() {
+    get("emotion/prefectures").then((res) => {
+      console.log(res);
+    });
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({

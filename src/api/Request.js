@@ -1,4 +1,8 @@
-const baseUrl = "hogehoge";
+const baseUrl = "https://open-hack-u-2020-backend.herokuapp.com/";
+
+const headers = {
+  "content-type": "application/x-www-form-urlencoded",
+};
 
 export function get(path) {
   return request("GET", path, null);
@@ -13,7 +17,12 @@ export function post(path, body) {
 }
 
 function request(method, path, body) {
-  return fetch(baseUrl + path, { method, headers, body }).then((res) => {
+  console.log(body);
+  return fetch(baseUrl + path, {
+    method: method,
+    headers: headers,
+    body: body,
+  }).then((res) => {
     return res.json();
   });
 }
