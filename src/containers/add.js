@@ -156,9 +156,8 @@ class Popup extends React.Component {
       latitude: 25,
       longtitude: 127.5,
       prefecture: "HOKKAIDO",
-      dateTime: "2020-08-31 18:40:05",
     };
-    post("comment/register", body).then((res) => {
+    post("/comment/register", body).then((res) => {
       if (res.hasSuccess) {
         alert("感情を登録しました！");
       } else {
