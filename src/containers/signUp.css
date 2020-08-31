@@ -58,7 +58,7 @@
   left: 136px;
   top: 37px;
 
-  font-family: Roboto;
+  font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 48px;
@@ -86,7 +86,7 @@
 
   /* new name */
 
-  font-family: Roboto;
+  font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
@@ -111,12 +111,13 @@
   /* OK */
 
   position: absolute;
-  width: 32px;
-  height: 27.45px;
-  left: 63px;
-  top: 11.76px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
 
-  font-family: Roboto;
+  font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 24px;
