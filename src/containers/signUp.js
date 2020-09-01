@@ -57,7 +57,6 @@ class SignUp extends React.Component {
       alert("名前を入力してください");
     } else {
       post("/user/register", { name: this.state.userName }).then((res) => {
-        console.log(res);
         if (res.ID !== 0) {
           console.log(res);
           localStorage.setItem('userId', res.ID);
