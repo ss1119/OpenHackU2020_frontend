@@ -1,7 +1,7 @@
 import React from "react";
 import "./home.css";
 import "./signUp.css";
-import { Link } from "react-router-dom";
+import { post } from "../api/Request";
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -10,7 +10,11 @@ class SignUp extends React.Component {
       userName: "",
     };
   }
+
   render() {
+    if (localStorage.getItem("userId") != null) {
+      this.props.history.push("/home");
+    }
     return (
       <div>
         <div className="title_back">
@@ -38,7 +42,7 @@ class SignUp extends React.Component {
               placeholder="your name"
               className="signup_form"
             ></input>
-            <button className="OK_button" onClick={this.onLogIn.bind(this)}>
+            <button className="OK_button" onClick={this.onSignUp.bind(this)}>
               OK
             </button>
           </div>
@@ -52,11 +56,21 @@ class SignUp extends React.Component {
     });
   }
 
-  onLogIn() {
+  async onSignUp() {
     if (this.state.userName === "") {
       alert("名前を入力してください");
     } else {
-      this.props.history.push("/home");
+      post("/user/register", { name: this.state.userName }).then((res) => {
+        if (res.ID !== 0) {
+          console.log(res);
+          localStorage.setItem("userId", res.ID);
+          console.log(res.Name);
+          localStorage.setItem("userName", res.Name);
+          this.props.history.push("/home");
+        } else {
+          alert("この名前は使用できません");
+        }
+      });
     }
   }
 }

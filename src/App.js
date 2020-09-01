@@ -1,6 +1,11 @@
 import React from "react";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 
 import SignUp from "./containers/signUp.js";
 import Home from "./containers/home.js";
@@ -13,7 +18,7 @@ export class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/" component={SignUp} />
-            <Route exact path="/home" component={Home} />
+            <Route exaxt path="/home" component={Home} />
             <Route exact path="/profile" component={Profile} />
           </Switch>
         </Router>

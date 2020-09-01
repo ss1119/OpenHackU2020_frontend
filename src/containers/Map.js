@@ -1,14 +1,24 @@
 import React from "react";
 import { ReactComponent as MapContent } from "../map.svg";
 import styled from "styled-components";
+import { get } from "../api/Request";
 
 class Map extends React.Component {
-  state = {
-    lat: null,
-    lng: null,
-    colors: { prefecture: "TOKYO", color: "#ff66ff" },
-  };
+  constructor() {
+    super();
+    this.state = {
+      lat: null,
+      lng: null,
+      colors: [],
+    };
+  }
   componentDidMount() {
+    get("/emotion/prefectures").then((res) => {
+      this.setState({
+        colors: res,
+      });
+      this.setColors();
+    });
     navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({
@@ -20,7 +30,6 @@ class Map extends React.Component {
         console.log(err);
       }
     );
-    this.setColors();
   }
   render() {
     const MapArea = styled.div`
@@ -38,8 +47,12 @@ class Map extends React.Component {
   }
 
   setColors() {
-    document.getElementById("MapStyle").getElementById("OSAKA").style.fill =
-      "#ff66ff";
+    this.state.colors.map((color) => {
+      document
+        .getElementById("MapStyle")
+        .getElementById(color.Prefecture)
+        .setAttribute("fill", color.Color);
+    });
   }
 }
 

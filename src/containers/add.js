@@ -1,5 +1,6 @@
 import React from "react";
 import "./add.css";
+import { post } from "../api/Request";
 
 class Popup extends React.Component {
   constructor() {
@@ -126,7 +127,7 @@ class Popup extends React.Component {
           ></img>
           <button
             className="add_button"
-            onClick={(this.onClickAddButton.bind(this), this.props.closePopup)}
+            onClick={this.onClickAddButton.bind(this)}
           >
             add
           </button>
@@ -143,7 +144,28 @@ class Popup extends React.Component {
     this.setState({ comment: e.target.value });
   }
 
-  onClickAddButton() {}
+  onClickAddButton() {
+    // if (this.state.selected_emotion_id === null) {
+    //   console.log("エラー");
+    //   alert("感情を選択してください");
+    // } else {
+    const body = {
+      user_id: 1,
+      emotion_id: 2,
+      comment: "hogehoge",
+      latitude: 25,
+      longtitude: 127.5,
+      prefecture: "HOKKAIDO",
+    };
+    post("/comment/register", body).then((res) => {
+      if (res.hasSuccess) {
+        alert("感情を登録しました！");
+      } else {
+        alert("感情を登録できませんでした");
+      }
+    });
+  }
+  //}
 }
 
 class Add extends React.Component {
