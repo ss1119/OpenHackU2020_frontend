@@ -1,28 +1,31 @@
-const baseUrl = "https://open-hack-u-2020-backend.herokuapp.com/";
+import axios from 'axios'
 
-const headers = {
-  "content-type": "application/x-www-form-urlencoded",
-};
+axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 export function get(path) {
-  return request("GET", path, null);
+  return request("get", path, null);
 }
 
-export function put(path, body) {
-  return request("PUT", path, body);
+export function patch(path, body) {
+  return request("patch", path, body);
 }
 
 export function post(path, body) {
-  return request("POST", path, body);
+  return request("post", path, body);
+}
+
+export function deleteRequest(path, body) {
+  return request("delete", path, body);
 }
 
 function request(method, path, body) {
-  console.log(body);
-  return fetch(baseUrl + path, {
+  return axios({
     method: method,
-    headers: headers,
-    body: body,
-  }).then((res) => {
-    return res.json();
-  });
+    url: path,
+    data: body
+  }).then(function(response) {
+      return response.data
+    }
+  );
 }
