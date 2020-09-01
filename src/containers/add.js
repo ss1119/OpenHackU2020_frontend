@@ -10,8 +10,26 @@ class Popup extends React.Component {
       your_emotion: "NONE",
       selected_emotion_id: null,
       comment: "",
+      lat: null,
+      lng: null
     };
   }
+
+  componentDidMount() {
+    //位置情報取得
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   render() {
     return (
       <div className="popup">
@@ -144,29 +162,81 @@ class Popup extends React.Component {
     this.setState({ comment: e.target.value });
   }
 
-  onClickAddButton() {
+  async onClickAddButton() {
     // if (this.state.selected_emotion_id === null) {
     //   console.log("エラー");
     //   alert("感情を選択してください");
     // } else {
+    const prefecture = await this.getPrefecture()
     const body = {
-      user_id: 1,
+      user_id: parseInt(localStorage.getItem("userId")),
       emotion_id: 2,
-      comment: "hogehoge",
-      latitude: 25,
-      longtitude: 127.5,
-      prefecture: "HOKKAIDO",
+      comment: this.state.comment,
+      latitude: this.state.lat,
+      longtitude: this.state.lng,
+      prefecture: prefecture,
     };
     post("/comment/register", body).then((res) => {
       if (res.hasSuccess) {
         alert("感情を登録しました！");
         this.props.closePopup();
+        //画面リロードの処理が必要！
       } else {
         alert("感情を登録できませんでした");
       }
     });
+    //}
   }
-  //}
+
+  getPrefecture() {
+    console.log("getPrefecture")
+    const param = "lat="+this.state.lat+"&lon="+this.state.lng+"&json";
+    const url = "https://aginfo.cgk.affrc.go.jp/ws/rgeocode.php?" + param;
+    const axios = require('axios')
+    return axios.get(url).then((res) => {
+        const placeData = res.data.result    
+        const prefectureKanji = placeData.prefecture.pname;
+        return this.convertKanjiToAlphabet(prefectureKanji);
+      }
+    ).catch((err) => {
+      console.log("通信エラー: ", err)
+      }
+    );
+  }
+
+  convertKanjiToAlphabet(prefecture) {
+    const Kanji=[
+      "北海道",
+      "青森県","岩手県","宮城県","秋田県","山形県","福島県",
+      "茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県",
+      "新潟県","山梨県","長野県","富山県","石川県","福井県","岐阜県","静岡県","愛知県",
+      "三重県","滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県",
+      "鳥取県","島根県","岡山県","広島県","山口県",
+      "徳島県","香川県","愛媛県","高知県",
+      "福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県",
+      "沖縄県", ""
+    ];
+    const Alphabet=[
+      "HOKKAIDO",
+      "AOMORI","IWATE","MIYAGI","AKITA","YAMAGATA","FUKUSHIMA",
+      "IBARAKI","TOCHIGI","GUNMA","SAITAMA","CHIBA","TOKYO","KANAGAWA",
+      "NIIGATA","YAMANASHI","NAGANO","TOYAMA","ISHIKAWA","FUKUI","GIFU","SHIZUOKA","AICHI",
+      "MIE","SHIGA","KYOTO","OSAKA","HYOGO","NARA","WAKAYAMA",
+      "TOTTORI","SHIMANE","OAKAYAMA","HIROSHIMA","YAMAGUCHI",
+      "TOKUSHIMA","KAGAWA","EHIME","KOCHI",
+      "FUKUOKA","SAGA","NAGASAKI","KUMAMOTO","OITA","MIYAZAKI","KAGOSHIMA",
+      "OKINAWA","ERROR"
+      ];
+    let ElementNumber=47;
+    //都道府県の要素番号を取得
+    //当てはまる要素が存在しないときは-1を返す
+    ElementNumber=Kanji.indexOf(prefecture);
+    //都道府県以外である時の処理
+    if (ElementNumber===-1){
+        ElementNumber=47;
+    }
+    return Alphabet[ElementNumber];      
+  }
 }
 
 class Add extends React.Component {
