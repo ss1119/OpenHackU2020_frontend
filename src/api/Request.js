@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios";
 
 axios.defaults.baseURL = "http://localhost:8080";
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 export function get(path) {
   return request("get", path, null);
@@ -23,9 +23,8 @@ function request(method, path, body) {
   return axios({
     method: method,
     url: path,
-    data: body
-  }).then(function(response) {
-      return response.data
-    }
-  );
+    data: body,
+  }).then(function (response) {
+    return response.data;
+  });
 }

@@ -10,7 +10,11 @@ class SignUp extends React.Component {
       userName: "",
     };
   }
+
   render() {
+    if (localStorage.getItem("userId") != null) {
+      this.props.history.push("/home");
+    }
     return (
       <div>
         <div className="title_back">
@@ -59,8 +63,9 @@ class SignUp extends React.Component {
       post("/user/register", { name: this.state.userName }).then((res) => {
         if (res.ID !== 0) {
           console.log(res);
-          localStorage.setItem('userId', res.ID);
-          localStorage.setItem('userName', res.Name);
+          localStorage.setItem("userId", res.ID);
+          console.log(res.Name);
+          localStorage.setItem("userName", res.Name);
           this.props.history.push("/home");
         } else {
           alert("この名前は使用できません");
