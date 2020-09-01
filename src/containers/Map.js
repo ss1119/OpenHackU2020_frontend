@@ -17,7 +17,7 @@ class Map extends React.Component {
       this.setState({
         colors: res,
       });
-      this.setColors();
+      this.setColorsAndEvent();
     });
     navigator.geolocation.getCurrentPosition(
       (position) => {
@@ -46,12 +46,21 @@ class Map extends React.Component {
     );
   }
 
-  setColors() {
+  async setColorsAndEvent() {
     this.state.colors.map((color) => {
-      document
+      let element = document
         .getElementById("MapStyle")
-        .getElementById(color.Prefecture)
-        .setAttribute("fill", color.Color);
+        .getElementById(color.Prefecture);
+      //色塗り
+      element.setAttribute("fill", color.Color);
+      //イベント処理
+      element.addEventListener("click", () => {
+        get("/emotion/"+color.Prefecture+"/comments").then((res) => {
+          console.log(res)
+          //コメント一覧を表示するコンポーネント呼び出し
+          //データ渡す
+        });
+      }, false)
     });
   }
 }
