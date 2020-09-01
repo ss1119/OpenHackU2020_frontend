@@ -1,7 +1,14 @@
 import React from "react";
 import "./edit.css";
+import { patch } from "../api/Request";
 
 class Edit extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      userName: localStorage.getItem("userName"),
+    };
+  }
   render() {
     return (
       <div className="popup">
@@ -15,17 +22,44 @@ class Edit extends React.Component {
             <div className="edit_title">edit</div>
           </div>
           <input
-            name="newName"
+            value={this.state.userName}
             type="text"
-            placeholder="new name"
+            onChange={this.onChangeUserName.bind(this)}
+            placeholder={this.state.userName}
             className="edit_form"
           ></input>
-          <div className="OK_button" onClick={this.props.closePopup}>
-            <div className="OK_button_text">OK</div>
-          </div>
+          <button className="OK_button" onClick={this.onEdit.bind(this)}>
+            OK
+          </button>
         </div>
       </div>
     );
+  }
+
+  onChangeUserName(e) {
+    this.setState({
+      userName: e.target.value,
+    });
+  }
+
+  async onEdit() {
+    if (this.state.userName === "") {
+      alert("名前を入力してください");
+    } else {
+      console.log();
+      patch("/user/edit", {
+        id: parseInt(localStorage.getItem("userId")),
+        newName: this.state.userName,
+      }).then((res) => {
+        if (res.ID !== 0) {
+          localStorage.setItem("userId", res.ID);
+          localStorage.setItem("userName", res.Name);
+          this.props.closePopup();
+        } else {
+          alert("この名前は使用できません");
+        }
+      });
+    }
   }
 }
 
