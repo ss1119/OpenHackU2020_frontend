@@ -52,18 +52,18 @@ class SignUp extends React.Component {
     });
   }
 
-  onSignUp() {
+  async onSignUp() {
     if (this.state.userName === "") {
       alert("名前を入力してください");
     } else {
       post("/user/register", { name: this.state.userName }).then((res) => {
         if (res.ID !== 0) {
           console.log(res);
-          localStorage.setItem({ userName: res.Name, userId: res.ID });
+          localStorage.setItem('userId', res.ID);
+          localStorage.setItem('userName', res.Name);
           this.props.history.push("/home");
         } else {
           alert("この名前は使用できません");
-          this.props.history.push("/home");
         }
       });
     }
