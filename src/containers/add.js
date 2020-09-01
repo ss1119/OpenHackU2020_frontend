@@ -160,6 +160,7 @@ class Popup extends React.Component {
     post("/comment/register", body).then((res) => {
       if (res.hasSuccess) {
         alert("感情を登録しました！");
+        this.props.closePopup();
       } else {
         alert("感情を登録できませんでした");
       }

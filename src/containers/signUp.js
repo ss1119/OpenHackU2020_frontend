@@ -50,6 +50,7 @@ class SignUp extends React.Component {
       </div>
     );
   }
+
   onChengeUserName(e) {
     this.setState({
       userName: e.target.value,
@@ -62,9 +63,7 @@ class SignUp extends React.Component {
     } else {
       post("/user/register", { name: this.state.userName }).then((res) => {
         if (res.ID !== 0) {
-          console.log(res);
           localStorage.setItem("userId", res.ID);
-          console.log(res.Name);
           localStorage.setItem("userName", res.Name);
           this.props.history.push("/home");
         } else {
