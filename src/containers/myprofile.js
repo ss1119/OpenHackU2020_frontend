@@ -40,7 +40,7 @@ class MyProfile extends React.Component {
         <div className="name_area">
           <div className="name_title">name</div>
           <div className="name_flame">
-            <div className="name">hanako</div>
+            <div className="name">{localStorage.getItem("userName")}</div>
             <img
               src={`${process.env.PUBLIC_URL}/Button/editボタン.png`}
               onClick={this.togglePopup_edit.bind(this)}

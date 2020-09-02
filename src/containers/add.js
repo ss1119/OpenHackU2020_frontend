@@ -6,12 +6,29 @@ class Popup extends React.Component {
   constructor() {
     super();
     this.state = {
-      choice: false,
-      your_emotion: "NONE",
-      selected_emotion_id: null,
+      isChoice: false,
+      selectedEmotionId: null,
       comment: "",
+      lat: null,
+      lng: null,
     };
   }
+
+  componentDidMount() {
+    //位置情報取得
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.setState({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   render() {
     return (
       <div className="popup">
@@ -21,88 +38,88 @@ class Popup extends React.Component {
           <div className="emotions_button">
             <div className="joy_back"></div>
             <img
-              src={`${process.env.PUBLIC_URL}/face/J1.png`}
+              src={`${process.env.PUBLIC_URL}/face/1.png`}
               className="j1_button"
-              onClick={this.choice.bind(this, "J1")}
+              onClick={this.onChoice.bind(this, "1")}
               alt="喜"
             ></img>
             <img
-              src={`${process.env.PUBLIC_URL}/face/J2.png`}
+              src={`${process.env.PUBLIC_URL}/face/2.png`}
               className="j2_button"
-              onClick={this.choice.bind(this, "J2")}
+              onClick={this.onChoice.bind(this, "2")}
               alt="喜"
             ></img>
             <img
-              src={`${process.env.PUBLIC_URL}/face/J3.png`}
+              src={`${process.env.PUBLIC_URL}/face/3.png`}
               className="j3_button"
-              onClick={this.choice.bind(this, "J3")}
+              onClick={this.onChoice.bind(this, "3")}
               alt="喜"
             ></img>
             <div className="angry_back"></div>
             <img
-              src={`${process.env.PUBLIC_URL}/face/A1.png`}
+              src={`${process.env.PUBLIC_URL}/face/4.png`}
               className="a1_button"
-              onClick={this.choice.bind(this, "A1")}
+              onClick={this.onChoice.bind(this, "4")}
               alt="怒"
             ></img>
             <img
-              src={`${process.env.PUBLIC_URL}/face/A2.png`}
+              src={`${process.env.PUBLIC_URL}/face/5.png`}
               className="a2_button"
-              onClick={this.choice.bind(this, "A2")}
+              onClick={this.onChoice.bind(this, "5")}
               alt="怒"
             ></img>
             <img
-              src={`${process.env.PUBLIC_URL}/face/A3.png`}
+              src={`${process.env.PUBLIC_URL}/face/6.png`}
               className="a3_button"
-              onClick={this.choice.bind(this, "A3")}
+              onClick={this.onChoice.bind(this, "6")}
               alt="怒"
             ></img>
             <div className="sad_back"></div>
             <img
-              src={`${process.env.PUBLIC_URL}/face/S1.png`}
+              src={`${process.env.PUBLIC_URL}/face/7.png`}
               className="s1_button"
-              onClick={this.choice.bind(this, "S1")}
+              onClick={this.onChoice.bind(this, "7")}
               alt="哀"
             ></img>
             <img
-              src={`${process.env.PUBLIC_URL}/face/S2.png`}
+              src={`${process.env.PUBLIC_URL}/face/8.png`}
               className="s2_button"
-              onClick={this.choice.bind(this, "S2")}
+              onClick={this.onChoice.bind(this, "8")}
               alt="哀"
             ></img>
             <img
-              src={`${process.env.PUBLIC_URL}/face/S3.png`}
+              src={`${process.env.PUBLIC_URL}/face/9.png`}
               className="s3_button"
-              onClick={this.choice.bind(this, "S3")}
+              onClick={this.onChoice.bind(this, "9")}
               alt="哀"
             ></img>
             <div className="happy_back"></div>
             <img
-              src={`${process.env.PUBLIC_URL}/face/H1.png`}
+              src={`${process.env.PUBLIC_URL}/face/10.png`}
               className="h1_button"
-              onClick={this.choice.bind(this, "H1")}
+              onClick={this.onChoice.bind(this, "10")}
               alt="楽"
             ></img>
             <img
-              src={`${process.env.PUBLIC_URL}/face/H2.png`}
+              src={`${process.env.PUBLIC_URL}/face/11.png`}
               className="h2_button"
-              onClick={this.choice.bind(this, "H2")}
+              onClick={this.onChoice.bind(this, "11")}
               alt="楽"
             ></img>
             <img
-              src={`${process.env.PUBLIC_URL}/face/H3.png`}
+              src={`${process.env.PUBLIC_URL}/face/12.png`}
               className="h3_button"
-              onClick={this.choice.bind(this, "H3")}
+              onClick={this.onChoice.bind(this, "12")}
               alt="楽"
             ></img>
           </div>
           <div className="item_youremotion">your emotion</div>
           <div className="line_youremotion"></div>
-          {this.state.choice ? (
+          {this.state.isChoice ? (
             <img
               src={
                 `${process.env.PUBLIC_URL}/face/` +
-                this.state.your_emotion +
+                this.state.selectedEmotionId +
                 `.png`
               }
               className="choice_emotion"
@@ -136,36 +153,166 @@ class Popup extends React.Component {
     );
   }
 
-  choice(emotion) {
-    this.setState({ choice: true, your_emotion: emotion });
+  onChoice(emotionId) {
+    this.setState({ isChoice: true, selectedEmotionId: emotionId });
   }
 
   onChangeComment(e) {
     this.setState({ comment: e.target.value });
   }
 
-  onClickAddButton() {
-    // if (this.state.selected_emotion_id === null) {
-    //   console.log("エラー");
-    //   alert("感情を選択してください");
-    // } else {
-    const body = {
-      user_id: 1,
-      emotion_id: 2,
-      comment: "hogehoge",
-      latitude: 25,
-      longtitude: 127.5,
-      prefecture: "HOKKAIDO",
-    };
-    post("/comment/register", body).then((res) => {
-      if (res.hasSuccess) {
-        alert("感情を登録しました！");
-      } else {
-        alert("感情を登録できませんでした");
-      }
-    });
+  async onClickAddButton() {
+    if (this.state.selectedEmotionId === null) {
+      alert("感情を選択してください");
+    } else {
+      const prefecture = await this.getPrefecture();
+      const body = {
+        user_id: parseInt(localStorage.getItem("userId")),
+        emotion_id: parseInt(this.state.selectedEmotionId),
+        comment: this.state.comment,
+        latitude: this.state.lat,
+        longtitude: this.state.lng,
+        prefecture: prefecture,
+      };
+      post("/comment/register", body).then((res) => {
+        if (res.hasSuccess) {
+          alert("感情を登録しました！");
+          this.props.closePopup();
+          //画面リロードの処理が必要！
+        } else {
+          alert("感情を登録できませんでした");
+        }
+      });
+    }
   }
-  //}
+
+  getPrefecture() {
+    const param = "lat=" + this.state.lat + "&lon=" + this.state.lng + "&json";
+    const url = "https://aginfo.cgk.affrc.go.jp/ws/rgeocode.php?" + param;
+    const axios = require("axios");
+    return axios
+      .get(url)
+      .then((res) => {
+        const placeData = res.data.result;
+        const prefectureKanji = placeData.prefecture.pname;
+        return this.convertKanjiToAlphabet(prefectureKanji);
+      })
+      .catch((err) => {
+        console.log("通信エラー: ", err);
+      });
+  }
+
+  convertKanjiToAlphabet(prefecture) {
+    const Kanji = [
+      "北海道",
+      "青森県",
+      "岩手県",
+      "宮城県",
+      "秋田県",
+      "山形県",
+      "福島県",
+      "茨城県",
+      "栃木県",
+      "群馬県",
+      "埼玉県",
+      "千葉県",
+      "東京都",
+      "神奈川県",
+      "新潟県",
+      "山梨県",
+      "長野県",
+      "富山県",
+      "石川県",
+      "福井県",
+      "岐阜県",
+      "静岡県",
+      "愛知県",
+      "三重県",
+      "滋賀県",
+      "京都府",
+      "大阪府",
+      "兵庫県",
+      "奈良県",
+      "和歌山県",
+      "鳥取県",
+      "島根県",
+      "岡山県",
+      "広島県",
+      "山口県",
+      "徳島県",
+      "香川県",
+      "愛媛県",
+      "高知県",
+      "福岡県",
+      "佐賀県",
+      "長崎県",
+      "熊本県",
+      "大分県",
+      "宮崎県",
+      "鹿児島県",
+      "沖縄県",
+      "",
+    ];
+    const Alphabet = [
+      "HOKKAIDO",
+      "AOMORI",
+      "IWATE",
+      "MIYAGI",
+      "AKITA",
+      "YAMAGATA",
+      "FUKUSHIMA",
+      "IBARAKI",
+      "TOCHIGI",
+      "GUNMA",
+      "SAITAMA",
+      "CHIBA",
+      "TOKYO",
+      "KANAGAWA",
+      "NIIGATA",
+      "YAMANASHI",
+      "NAGANO",
+      "TOYAMA",
+      "ISHIKAWA",
+      "FUKUI",
+      "GIFU",
+      "SHIZUOKA",
+      "AICHI",
+      "MIE",
+      "SHIGA",
+      "KYOTO",
+      "OSAKA",
+      "HYOGO",
+      "NARA",
+      "WAKAYAMA",
+      "TOTTORI",
+      "SHIMANE",
+      "OAKAYAMA",
+      "HIROSHIMA",
+      "YAMAGUCHI",
+      "TOKUSHIMA",
+      "KAGAWA",
+      "EHIME",
+      "KOCHI",
+      "FUKUOKA",
+      "SAGA",
+      "NAGASAKI",
+      "KUMAMOTO",
+      "OITA",
+      "MIYAZAKI",
+      "KAGOSHIMA",
+      "OKINAWA",
+      "ERROR",
+    ];
+    let ElementNumber = 47;
+    //都道府県の要素番号を取得
+    //当てはまる要素が存在しないときは-1を返す
+    ElementNumber = Kanji.indexOf(prefecture);
+    //都道府県以外である時の処理
+    if (ElementNumber === -1) {
+      ElementNumber = 47;
+    }
+    return Alphabet[ElementNumber];
+  }
 }
 
 class Add extends React.Component {
