@@ -1,0 +1,24 @@
+.popup_from_map {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  .popup_inner_from_map {
+    /* addpage */
+    position: absolute;
+    width: 95%;
+    height: 400px;
+    left: 2.5%;
+    bottom: 0px;
+    overflow: scroll;
+
+    background: #ffffff;
+    border: 2px solid;
+    border-color: rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+  }

@@ -2,6 +2,8 @@ import React from "react";
 import { ReactComponent as MapContent } from "../map.svg";
 import styled from "styled-components";
 import { get } from "../api/Request";
+import "./postListViewPopup.css";
+import PostListView from "./postListView";
 
 class Map extends React.Component {
   constructor() {
@@ -10,6 +12,8 @@ class Map extends React.Component {
       lat: null,
       lng: null,
       colors: [],
+      comments: [],
+      showPopup: false,
     };
   }
   componentDidMount() {
@@ -29,9 +33,14 @@ class Map extends React.Component {
       -ms-transform: translate(-50%, 0%);
     `;
     return (
-      <MapArea>
-        <MapContent id="MapStyle" />
-      </MapArea>
+      <div>
+        <MapArea>
+          <MapContent id="MapStyle" />
+        </MapArea>
+        {this.state.showPopup ? (
+          <Popup closePopup={this.togglePopup.bind(this)} comments={this.state.comments}/>
+        ) : null}
+      </div>
     );
   }
 
@@ -43,14 +52,38 @@ class Map extends React.Component {
       //色塗り
       element.setAttribute("fill", color.Color);
       //イベント処理
-      element.addEventListener("click", () => {
-        get("/emotion/"+color.Prefecture+"/comments").then((res) => {
-          console.log(res)
-          //コメント一覧を表示するコンポーネント呼び出し
-          //データ渡す
+      element.addEventListener("click", async () => {
+        await get("/emotion/"+color.Prefecture+"/comments").then((res) => {
+          this.setState({
+            comments: res
+          });
+          console.log(this.state.comments)
         });
+        this.togglePopup()
       }, false)
     });
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup,
+    });
+  }
+}
+
+class Popup extends React.Component {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return (
+      <div className="popup_from_map">
+        <div className="popup_inner_from_map">
+          <PostListView comments={this.props.comments}/>
+        </div>
+      </div>
+    );
   }
 }
 
