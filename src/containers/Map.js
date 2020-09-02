@@ -19,17 +19,6 @@ class Map extends React.Component {
       });
       this.setColors();
     });
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
   }
   render() {
     const MapArea = styled.div`
