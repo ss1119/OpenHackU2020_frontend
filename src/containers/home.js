@@ -6,19 +6,13 @@ import Map from "./Map.js";
 import { Link } from "react-router-dom";
 
 class Home extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      isNotZoom: true,
-    };
-  }
-
-  zoom() {
+  zoomIn() {
     document.getElementById("MapStyle").setAttribute("width", "5000px");
     document.getElementById("MapStyle").setAttribute("height", "5000px");
-    //this.setState({
-    //  isNotZoom: !this.state.isNotZoom,
-    //});
+  }
+  zoomOut() {
+    document.getElementById("MapStyle").setAttribute("width", "600px");
+    document.getElementById("MapStyle").setAttribute("height", "600px");
   }
 
   render() {
@@ -52,16 +46,22 @@ class Home extends React.Component {
               ></img>
             </Link>
           </div>
-          {this.state.isNotZoom ? (
-            <div className="zoom_button">
-              <img
-                src={`${process.env.PUBLIC_URL}/Button/拡大アイコン.png`}
-                className="zoom_button_icon"
-                alt="zoom"
-                onClick={() => this.zoom()}
-              ></img>
-            </div>
-          ) : null}
+          <div className="zoom_in_button">
+            <img
+              src={`${process.env.PUBLIC_URL}/Button/拡大アイコン.png`}
+              className="zoom_button_icon"
+              alt="zoom"
+              onClick={this.zoomIn.bind(this)}
+            ></img>
+          </div>
+          <div className="zoom_out_button">
+            <img
+              src={`${process.env.PUBLIC_URL}/Button/縮小アイコン.png`}
+              className="zoom_button_icon"
+              alt="zoom"
+              onClick={this.zoomOut.bind(this)}
+            ></img>
+          </div>
         </div>
         <AddPage />
       </HomeArea>
