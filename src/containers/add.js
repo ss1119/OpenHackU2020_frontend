@@ -38,78 +38,78 @@ class Popup extends React.Component {
           <div className="emotions_button">
             <div className="joy_back"></div>
             <img
-              src={`${process.env.PUBLIC_URL}/face/1.png`}
+              src={`${process.env.PUBLIC_URL}/face/0.png`}
               className="j1_button"
+              onClick={this.onChoice.bind(this, "0")}
+              alt="喜"
+            ></img>
+            <img
+              src={`${process.env.PUBLIC_URL}/face/1.png`}
+              className="j2_button"
               onClick={this.onChoice.bind(this, "1")}
               alt="喜"
             ></img>
             <img
               src={`${process.env.PUBLIC_URL}/face/2.png`}
-              className="j2_button"
-              onClick={this.onChoice.bind(this, "2")}
-              alt="喜"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/3.png`}
               className="j3_button"
-              onClick={this.onChoice.bind(this, "3")}
+              onClick={this.onChoice.bind(this, "2")}
               alt="喜"
             ></img>
             <div className="angry_back"></div>
             <img
-              src={`${process.env.PUBLIC_URL}/face/4.png`}
+              src={`${process.env.PUBLIC_URL}/face/3.png`}
               className="a1_button"
+              onClick={this.onChoice.bind(this, "3")}
+              alt="怒"
+            ></img>
+            <img
+              src={`${process.env.PUBLIC_URL}/face/4.png`}
+              className="a2_button"
               onClick={this.onChoice.bind(this, "4")}
               alt="怒"
             ></img>
             <img
               src={`${process.env.PUBLIC_URL}/face/5.png`}
-              className="a2_button"
-              onClick={this.onChoice.bind(this, "5")}
-              alt="怒"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/6.png`}
               className="a3_button"
-              onClick={this.onChoice.bind(this, "6")}
+              onClick={this.onChoice.bind(this, "5")}
               alt="怒"
             ></img>
             <div className="sad_back"></div>
             <img
-              src={`${process.env.PUBLIC_URL}/face/7.png`}
+              src={`${process.env.PUBLIC_URL}/face/6.png`}
               className="s1_button"
+              onClick={this.onChoice.bind(this, "6")}
+              alt="哀"
+            ></img>
+            <img
+              src={`${process.env.PUBLIC_URL}/face/7.png`}
+              className="s2_button"
               onClick={this.onChoice.bind(this, "7")}
               alt="哀"
             ></img>
             <img
               src={`${process.env.PUBLIC_URL}/face/8.png`}
-              className="s2_button"
-              onClick={this.onChoice.bind(this, "8")}
-              alt="哀"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/9.png`}
               className="s3_button"
-              onClick={this.onChoice.bind(this, "9")}
+              onClick={this.onChoice.bind(this, "8")}
               alt="哀"
             ></img>
             <div className="happy_back"></div>
             <img
-              src={`${process.env.PUBLIC_URL}/face/10.png`}
+              src={`${process.env.PUBLIC_URL}/face/9.png`}
               className="h1_button"
+              onClick={this.onChoice.bind(this, "9")}
+              alt="楽"
+            ></img>
+            <img
+              src={`${process.env.PUBLIC_URL}/face/10.png`}
+              className="h2_button"
               onClick={this.onChoice.bind(this, "10")}
               alt="楽"
             ></img>
             <img
               src={`${process.env.PUBLIC_URL}/face/11.png`}
-              className="h2_button"
-              onClick={this.onChoice.bind(this, "11")}
-              alt="楽"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/12.png`}
               className="h3_button"
-              onClick={this.onChoice.bind(this, "12")}
+              onClick={this.onChoice.bind(this, "11")}
               alt="楽"
             ></img>
           </div>

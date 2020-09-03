@@ -70,7 +70,7 @@
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, 0%);
   -ms-transform: translate(-50%, 0%);
-  top: 258px;
+  top: 131px;
 }
 .name_title {
   /* name */
@@ -167,4 +167,25 @@
   text-align: center;
 
   color: #4b4b4b;
+}
+
+.paginateContainer {
+  position: absolute;
+  top: 250px;
+  width: 98%;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.postList {
+  overflow: scroll;
+}
+
+.buttonContainer {
+  position: absolute;
+  bottom: 180px; 
+  right: 5%;
 }
