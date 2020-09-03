@@ -23,14 +23,12 @@ class Map extends React.Component {
   render() {
     const MapArea = styled.div`
       position: absolute;
-      left: 50%;
-      transform: translate(-50%, 0%);
-      -webkit-transform: translate(-50%, 0%);
-      -ms-transform: translate(-50%, 0%);
+      top: 110px;
+      left: 0%;
     `;
     return (
       <MapArea>
-        <MapContent id="MapStyle" />
+        <MapContent id="MapStyle" width="600px" height="600px" />
       </MapArea>
     );
   }

@@ -6,6 +6,21 @@ import Map from "./Map.js";
 import { Link } from "react-router-dom";
 
 class Home extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isNotZoom: true,
+    };
+  }
+
+  zoom() {
+    document.getElementById("MapStyle").setAttribute("width", "5000px");
+    document.getElementById("MapStyle").setAttribute("height", "5000px");
+    //this.setState({
+    //  isNotZoom: !this.state.isNotZoom,
+    //});
+  }
+
   render() {
     const HomeArea = styled.div`
       width: 375px;
@@ -37,6 +52,16 @@ class Home extends React.Component {
               ></img>
             </Link>
           </div>
+          {this.state.isNotZoom ? (
+            <div className="zoom_button">
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/拡大アイコン.png`}
+                className="zoom_button_icon"
+                alt="zoom"
+                onClick={() => this.zoom()}
+              ></img>
+            </div>
+          ) : null}
         </div>
         <AddPage />
       </HomeArea>
