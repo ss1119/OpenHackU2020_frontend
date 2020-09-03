@@ -1,7 +1,7 @@
 .plus_button_area {
   /* Ellipse 2 */
 
-  position: absolute;
+  position: fixed;
   width: 100px;
   height: 100px;
   left: 50%;
