@@ -30,7 +30,7 @@ class Map extends React.Component {
     `;
     return (
       <MapArea>
-        <MapContent id="MapStyle" />
+        <MapContent id="MapStyle" z />
       </MapArea>
     );
   }

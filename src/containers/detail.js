@@ -49,13 +49,17 @@ const detail = (props) => {
           className="detail_send_button"
           alt="返信送信"
         ></img>
-        <div className="response_area">
+        <div className="responses_area">
           <Response
             name={"taro"}
             response={"分かる…つら…"}
             hour={"9"}
             minute={"40"}
           />
+          <br />
+          <br />
+          <br />
+          <br />
         </div>
         <img
           src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
