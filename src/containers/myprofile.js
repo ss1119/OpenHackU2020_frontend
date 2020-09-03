@@ -1,7 +1,6 @@
 import React from "react";
-import Post from "./postView.js";
+import postListView from "./postListView.js";
 import Edit from "./edit.js";
-import Delete from "./delete.js";
 import "./myprofile.css";
 
 class MyProfile extends React.Component {
@@ -9,18 +8,13 @@ class MyProfile extends React.Component {
     super();
     this.state = {
       showPopup_edit: false,
-      showPopup_delete: false,
+      comments: [],
     };
   }
 
   togglePopup_edit() {
     this.setState({
       showPopup_edit: !this.state.showPopup_edit,
-    });
-  }
-  togglePopup_delete() {
-    this.setState({
-      showPopup_delete: !this.state.showPopup_delete,
     });
   }
 
@@ -49,48 +43,17 @@ class MyProfile extends React.Component {
             ></img>
           </div>
         </div>
-        <div className="post_area">
-          <div className="post_title">post</div>
-          <Post
-            //背景色(感情から求めるようにできる？)
-            R={"255"}
-            G={"51"}
-            B={"51"}
-            //感情
-            emotion={"A1"}
-            //返信の件数
-            num={"1"}
-            //自分の投稿か否か(削除ボタンの表示判断)
-            mine={true}
-            //POPUPのON/OFFを切り替える関数を渡す
-            togglePopup={() => {
-              this.togglePopup_delete();
-            }}
-          />
-          <br />
-          <br />
-          <br />
-          <br />
-          <Post
-            R={"153"}
-            G={"153"}
-            B={"255"}
-            emotion={"S3"}
-            num={"0"}
-            mine={true}
-            togglePopup={() => {
-              this.togglePopup_delete();
-            }}
-          />
-        </div>
+        {/* TODO処理 */}
+        {/* <postListView /> */}
         {this.state.showPopup_edit ? (
           <Edit closePopup={this.togglePopup_edit.bind(this)} />
         ) : null}
-        {this.state.showPopup_delete ? (
-          <Delete closePopup={this.togglePopup_delete.bind(this)} />
-        ) : null}
       </div>
     );
+  }
+
+  async getComments() {
+    //TODO処理
   }
 }
 
