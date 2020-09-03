@@ -12,17 +12,24 @@ const postView = (props) => {
           "1px solid rgba(" + props.R + "," + props.G + "," + props.B + ", 1)",
       }}
     >
-      <img
-        src={`${process.env.PUBLIC_URL}/face/` + props.emotion + `.png`}
-        className="post_emotion"
-        alt="emotion"
-      ></img>
-      <div className="post_num">{props.num}件の返信</div>
+      <div
+        className="post_fill"
+        onClick={() => {
+          props.togglePopup_detail();
+        }}
+      >
+        <img
+          src={`${process.env.PUBLIC_URL}/face/` + props.emotion + `.png`}
+          className="post_emotion"
+          alt="emotion"
+        ></img>
+        <div className="post_num">{props.num}件の返信</div>
+      </div>
       {props.mine ? (
         <img
           src={`${process.env.PUBLIC_URL}/Button/削除ボタン.png`}
           onClick={() => {
-            props.togglePopup();
+            props.togglePopup_delete();
           }}
           className="post_garbage"
           alt="delete"

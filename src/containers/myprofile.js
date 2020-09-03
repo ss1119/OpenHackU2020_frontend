@@ -2,6 +2,7 @@ import React from "react";
 import Post from "./postView.js";
 import Edit from "./edit.js";
 import Delete from "./delete.js";
+import Detail from "./detail.js";
 import "./myprofile.css";
 
 class MyProfile extends React.Component {
@@ -10,6 +11,7 @@ class MyProfile extends React.Component {
     this.state = {
       showPopup_edit: false,
       showPopup_delete: false,
+      showPopup_detail: false,
     };
   }
 
@@ -21,6 +23,11 @@ class MyProfile extends React.Component {
   togglePopup_delete() {
     this.setState({
       showPopup_delete: !this.state.showPopup_delete,
+    });
+  }
+  togglePopup_detail() {
+    this.setState({
+      showPopup_detail: !this.state.showPopup_detail,
     });
   }
 
@@ -57,14 +64,17 @@ class MyProfile extends React.Component {
             G={"51"}
             B={"51"}
             //感情
-            emotion={"A1"}
+            emotion={"4"}
             //返信の件数
             num={"1"}
             //自分の投稿か否か(削除ボタンの表示判断)
             mine={true}
             //POPUPのON/OFFを切り替える関数を渡す
-            togglePopup={() => {
+            togglePopup_delete={() => {
               this.togglePopup_delete();
+            }}
+            togglePopup_detail={() => {
+              this.togglePopup_detail();
             }}
           />
           <br />
@@ -75,11 +85,14 @@ class MyProfile extends React.Component {
             R={"153"}
             G={"153"}
             B={"255"}
-            emotion={"S3"}
+            emotion={"9"}
             num={"0"}
             mine={true}
-            togglePopup={() => {
+            togglePopup_delete={() => {
               this.togglePopup_delete();
+            }}
+            togglePopup_detail={() => {
+              this.togglePopup_detail();
             }}
           />
         </div>
@@ -88,6 +101,19 @@ class MyProfile extends React.Component {
         ) : null}
         {this.state.showPopup_delete ? (
           <Delete closePopup={this.togglePopup_delete.bind(this)} />
+        ) : null}
+        {this.state.showPopup_detail ? (
+          <Detail
+            R={"153"}
+            G={"153"}
+            B={"255"}
+            emotion={"9"}
+            name={"hanako"}
+            hour={"9"}
+            minute={"38"}
+            comment={"電車混みすぎ…"}
+            closePopup={this.togglePopup_detail.bind(this)}
+          />
         ) : null}
       </div>
     );
