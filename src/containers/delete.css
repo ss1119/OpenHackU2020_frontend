@@ -1,7 +1,7 @@
 .delete_area {
   /* mypage_delete */
 
-  position: relative;
+  position: absolute;
   width: 365px;
   height: 186px;
   top: 50%;

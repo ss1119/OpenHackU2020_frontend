@@ -1,7 +1,6 @@
 import React from "react";
 import PostListView from "./postListView.js";
 import Edit from "./edit.js";
-import Delete from "./delete.js";
 import "./myprofile.css";
 import { get } from "../api/Request.js";
 
@@ -53,16 +52,8 @@ class MyProfile extends React.Component {
             ></img>
           </div>
         </div>
-        <div className="post_area">
-          <div className="post_title">post</div>
-        </div>
-        {this.state.showPopup_edit ? (
-          <Edit closePopup={this.togglePopup_edit.bind(this)} />
-        ) : null}
-        {this.state.showPopup_delete ? (
-          <Delete closePopup={this.togglePopup_delete.bind(this)} />
-        ) : null}
         <div className="paginateContainer">
+          <div className="post_title">post</div>
           {this.state.my_comments.length !== 0 ? (
             <PostListView
               className="postList"
@@ -71,8 +62,18 @@ class MyProfile extends React.Component {
           ) : null}
           {this.state.my_comments.length !== 0 ? (
             <div className="buttonContainer">
-              <button onClick={this.previousPage.bind(this)}>＜前へ</button>
-              <button onClick={this.nextPage.bind(this)}>次へ＞</button>
+              <button
+                className="scroll_button"
+                onClick={this.previousPage.bind(this)}
+              >
+                ＜
+              </button>
+              <button
+                className="scroll_button"
+                onClick={this.nextPage.bind(this)}
+              >
+                ＞
+              </button>
             </div>
           ) : null}
         </div>
