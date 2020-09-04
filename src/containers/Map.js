@@ -61,10 +61,9 @@ class Map extends React.Component {
               this.setState({
                 comments: res,
               });
-              console.log(this.state.comments);
             }
           );
-          this.togglePopup();
+          if(this.state.comments.length != 0) this.togglePopup();
         },
         false
       );
