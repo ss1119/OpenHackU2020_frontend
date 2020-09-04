@@ -170,8 +170,8 @@ class Popup extends React.Component {
         user_id: parseInt(localStorage.getItem("userId")),
         emotion_id: parseInt(this.state.selectedEmotionId),
         comment: this.state.comment,
-        latitude: this.state.lat,
-        longtitude: this.state.lng,
+        latitude: 0,
+        longtitude: 0,
         prefecture: prefecture,
       };
       post("/comment/register", body).then((res) => {

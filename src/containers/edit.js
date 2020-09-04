@@ -51,6 +51,7 @@ class Edit extends React.Component {
         newName: this.state.userName,
       }).then((res) => {
         if (res.ID !== 0) {
+          localStorage.setItem("userName", this.state.userName)
           this.props.closePopup();
         } else {
           alert("この名前は使用できません");
