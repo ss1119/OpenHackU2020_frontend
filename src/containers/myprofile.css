@@ -191,3 +191,17 @@
   bottom: 180px;
   right: 5%;
 }
+.scroll_button {
+  background: #efefef;
+
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #4b4b4b;
+
+  font-family: "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+  color: #4b4b4b;
+}

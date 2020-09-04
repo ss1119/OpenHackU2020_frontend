@@ -71,8 +71,18 @@ class MyProfile extends React.Component {
           ) : null}
           {this.state.my_comments.length !== 0 ? (
             <div className="buttonContainer">
-              <button onClick={this.previousPage.bind(this)}>＜前へ</button>
-              <button onClick={this.nextPage.bind(this)}>次へ＞</button>
+              <button
+                className="scroll_button"
+                onClick={this.previousPage.bind(this)}
+              >
+                ＜
+              </button>
+              <button
+                className="scroll_button"
+                onClick={this.nextPage.bind(this)}
+              >
+                ＞
+              </button>
             </div>
           ) : null}
         </div>

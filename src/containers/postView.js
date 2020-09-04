@@ -36,6 +36,7 @@ class postView extends React.Component {
             onClick={() => {
               this.togglePopup_detail();
             }}
+            className="post_fill"
           >
             <img
               src={
