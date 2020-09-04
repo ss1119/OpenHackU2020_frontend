@@ -4,6 +4,7 @@ import Delete from "./delete.js";
 import Detail from "./detail.js";
 import { get } from "../api/Request.js";
 import { convertIDtoContentColor, convertIDtoBorderColor } from "./color.js";
+import Loading from "./loading";
 
 class postView extends React.Component {
   constructor() {
@@ -13,6 +14,7 @@ class postView extends React.Component {
       showPopup_detail: false,
       comment: "",
       responses: [],
+      isLoading: false,
     };
   }
 
@@ -23,6 +25,7 @@ class postView extends React.Component {
   render() {
     return (
       <>
+        <Loading isLoading={this.state.idLoading} />
         <div
           className="post_frame"
           style={{
@@ -83,8 +86,12 @@ class postView extends React.Component {
   }
 
   async getComments() {
+    this.setState({
+      isLoading: true,
+    });
     const myComment = await get("emotion/comments/" + this.props.comment_id);
     this.setState({
+      isLoading: false,
       comment: myComment.CommentContent.Comment,
       responses: myComment.Response,
     });
