@@ -1,75 +1,132 @@
 import React from "react";
 import "./detail.css";
 import Response from "./responseView.js";
+import { post } from "../api/Request";
+import { convertIDtoContentColor, convertIDtoBorderColor } from "./color.js";
 
-const detail = (props) => {
-  return (
-    <div className="popup">
-      <div className="detail_area">
-        <div
-          className="detail_post_frame"
-          style={{
-            background:
-              "rgba(" + props.R + "," + props.G + "," + props.B + ", 0.3)",
-            border:
-              "1px solid rgba(" +
-              props.R +
-              "," +
-              props.G +
-              "," +
-              props.B +
-              ", 1)",
-          }}
-          onClick={() => {
-            props.togglePopup_detail();
-          }}
-        >
-          <img
-            src={`${process.env.PUBLIC_URL}/face/` + props.emotion + `.png`}
-            className="detail_post_emotion"
-            alt="emotion"
-          ></img>
-          <div className="detail_post_name">{props.name}</div>
-          <div className="detail_post_time">
-            {props.hour}:{props.minute}
+class detail extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      response: "",
+    };
+  }
+  render() {
+    const responses =
+      this.props.responses.length !== 0
+        ? this.props.responses.map((response) => {
+            return (
+              <Response
+                user_name={response.UserName}
+                response={response.Comment}
+                date_time={response.DateTime}
+              />
+            );
+          })
+        : null;
+    return (
+      <div className="popup">
+        <div className="detail_area">
+          <div
+            className="detail_post_frame"
+            style={{
+              background: convertIDtoContentColor(this.props.emotion_id),
+              border:
+                "2px solid " + convertIDtoBorderColor(this.props.emotion_id),
+              borderRadius: "20px",
+            }}
+          >
+            <img
+              src={
+                `${process.env.PUBLIC_URL}/face/` +
+                this.props.emotion_id +
+                `.png`
+              }
+              className="detail_post_emotion"
+              alt="emotion"
+            ></img>
+            <div className="detail_post_name">{this.props.user_name}</div>
+            <div className="detail_post_time">{this.props.date_time}</div>
+            <div className="detail_post_line"></div>
+            <div className="detail_post_comment">{this.props.comment}</div>
           </div>
-          <div className="detail_post_line"></div>
-          <div className="detail_post_comment">{props.comment}</div>
+          {this.props.mine === false ? (
+            <>
+              <input
+                type="text"
+                className="detail_response_area"
+                maxLength="100"
+                placeholder="response…"
+                disabled
+              ></input>
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
+                className="detail_send_button"
+                alt="返信送信"
+              ></img>
+            </>
+          ) : (
+            <>
+              <input
+                value={this.state.response}
+                type="text"
+                onChange={this.onChangeResponse.bind(this)}
+                className="detail_response_area"
+                maxLength="100"
+                placeholder="response…"
+              ></input>
+              <button onClick={this.onSend.bind(this)}>
+                <img
+                  src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
+                  onClick={this.props.closePopup}
+                  className="detail_send_button"
+                  alt="返信送信"
+                ></img>
+              </button>
+            </>
+          )}
+          <div className="responses_area">
+            {responses}
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <img
+            src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
+            onClick={this.props.closePopup}
+            className="detail_back_button"
+            alt="戻る"
+          ></img>
         </div>
-        <textarea
-          name="res"
-          type="text"
-          className="detail_response_area"
-          maxLength="100"
-          placeholder="response…"
-        ></textarea>
-        <img
-          src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
-          onClick={props.closePopup}
-          className="detail_send_button"
-          alt="返信送信"
-        ></img>
-        <div className="responses_area">
-          <Response
-            name={"taro"}
-            response={"分かる…つら…"}
-            hour={"9"}
-            minute={"40"}
-          />
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
-        <img
-          src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
-          onClick={props.closePopup}
-          className="detail_back_button"
-          alt="戻る"
-        ></img>
       </div>
-    </div>
-  );
-};
+    );
+  }
+
+  onChangeResponse(e) {
+    this.setState({
+      response: e.target.value,
+    });
+  }
+
+  async onSend() {
+    if (this.state.response === "") {
+      alert("返信内容を入力してください");
+    } else {
+      post("/comment/response/register", {
+        user_id: parseInt(localStorage.getItem("userId")),
+        comment_id: this.props.comment_id,
+        comment: this.state.response,
+      }).then((res) => {
+        if (res.ID !== 0) {
+          this.props.closePopup();
+        } else {
+          alert("コメント返信に失敗しました");
+          this.props.closePopup();
+        }
+      });
+    }
+  }
+}
 
 export default detail;

@@ -120,6 +120,7 @@
   line-height: 28px;
   display: flex;
   align-items: flex-end;
+  text-align: center;
 }
 .detail_send_button {
   position: absolute;
@@ -129,10 +130,12 @@
   top: 175px;
 }
 .responses_area {
+  /*todo:レイアウト修正*/
   position: absolute;
   width: 365px;
   height: 270px;
   left: 50%;
+  padding-bottom: 220px;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, 0%);
   -ms-transform: translate(-50%, 0%);

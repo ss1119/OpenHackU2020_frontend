@@ -2,7 +2,6 @@ import React from "react";
 import PostListView from "./postListView.js";
 import Edit from "./edit.js";
 import Delete from "./delete.js";
-import Detail from "./detail.js";
 import "./myprofile.css";
 import { get } from "../api/Request.js";
 
@@ -12,10 +11,10 @@ class MyProfile extends React.Component {
     this.state = {
       showPopup_edit: false,
       showPopup_delete: false,
-      showPopup_detail: false,
       my_comments: [],
       page_num: 1,
       page_size: 3,
+      selected_comment_id: null,
     };
   }
 
@@ -28,11 +27,6 @@ class MyProfile extends React.Component {
   togglePopup_edit() {
     this.setState({
       showPopup_edit: !this.state.showPopup_edit,
-    });
-  }
-  togglePopup_detail() {
-    this.setState({
-      showPopup_detail: !this.state.showPopup_detail,
     });
   }
 
@@ -68,38 +62,23 @@ class MyProfile extends React.Component {
         {this.state.showPopup_delete ? (
           <Delete closePopup={this.togglePopup_delete.bind(this)} />
         ) : null}
-        {this.state.showPopup_detail ? (
-          <Detail
-            R={"153"}
-            G={"153"}
-            B={"255"}
-            emotion={"9"}
-            name={"hanako"}
-            hour={"9"}
-            minute={"38"}
-            comment={"電車混みすぎ…"}
-            closePopup={this.togglePopup_detail.bind(this)}
-          />
-        ) : null}
         <div className="paginateContainer">
-          {this.state.my_comments != [] ? (
+          {this.state.my_comments.length !== 0 ? (
             <PostListView
               className="postList"
               comments={this.state.my_comments}
             />
           ) : null}
-          {this.state.showPopup_edit ? (
-            <Edit closePopup={this.togglePopup_edit.bind(this)} />
-          ) : null}
-          {this.state.my_comments != [] ? (
+          {this.state.my_comments.length !== 0 ? (
             <div className="buttonContainer">
               <button onClick={this.previousPage.bind(this)}>＜前へ</button>
               <button onClick={this.nextPage.bind(this)}>次へ＞</button>
             </div>
-          ) : (
-            <div></div>
-          )}
+          ) : null}
         </div>
+        {this.state.showPopup_edit ? (
+          <Edit closePopup={this.togglePopup_edit.bind(this)} />
+        ) : null}
       </div>
     );
   }
