@@ -3,6 +3,7 @@ import "./detail.css";
 import Response from "./responseView.js";
 import { post } from "../api/Request";
 import { convertIDtoContentColor, convertIDtoBorderColor } from "./color.js";
+import { Link } from "react-router-dom";
 import Loading from "./loading";
 
 class detail extends React.Component {
@@ -78,6 +79,31 @@ class detail extends React.Component {
               alt="戻る"
             ></img>
           </div>
+          <>
+            <input
+              value={this.state.response}
+              type="text"
+              onChange={this.onChangeResponse.bind(this)}
+              className="detail_response_area"
+              maxLength="100"
+              placeholder="response…"
+            ></input>
+            <Link to="/profile">
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
+                onClick={this.onSend.bind(this)}
+                className="detail_send_button"
+                alt="返信送信"
+              ></img>
+            </Link>
+          </>
+          <div className="responses_area">{responses}</div>
+          <img
+            src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
+            onClick={this.props.closePopup}
+            className="detail_back_button"
+            alt="戻る"
+          ></img>
         </div>
       </>
     );

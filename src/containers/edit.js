@@ -1,6 +1,7 @@
 import React from "react";
 import "./edit.css";
 import { patch } from "../api/Request";
+import { Link } from "react-router-dom";
 import Loading from "./loading";
 
 class Edit extends React.Component {
@@ -36,6 +37,18 @@ class Edit extends React.Component {
               OK
             </button>
           </div>
+          <input
+            value={this.state.userName}
+            type="text"
+            onChange={this.onChangeUserName.bind(this)}
+            placeholder={this.state.userName}
+            className="edit_form"
+          ></input>
+          <Link to="/profile">
+            <button className="OK_button" onClick={this.onEdit.bind(this)}>
+              OK
+            </button>
+          </Link>
         </div>
       </>
     );

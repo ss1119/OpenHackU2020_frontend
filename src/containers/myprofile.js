@@ -79,7 +79,16 @@ class MyProfile extends React.Component {
                   ＞
                 </button>
               </div>
-            ) : null}
+              ) : 
+              <div className="buttonContainer">
+                <button
+                  className="scroll_button"
+                  onClick={this.previousPage.bind(this)}
+                >
+                  ＜
+                </button>
+              </div>
+               }
           </div>
           {this.state.showPopup_edit ? (
             <Edit closePopup={this.togglePopup_edit.bind(this)} />
@@ -101,14 +110,10 @@ class MyProfile extends React.Component {
         "/" +
         this.state.page_size
     );
-    if (myComments.length !== 0) {
-      this.setState({
+    this.setState({
         my_comments: myComments,
-      });
-      this.setState({
         isLoading: false,
-      });
-    }
+    });
   }
 
   previousPage() {
@@ -118,7 +123,6 @@ class MyProfile extends React.Component {
       page_num: pageNum,
     });
     this.getComments(pageNum).then(() => {
-      console.log(this.state.my_comments);
     });
   }
 
@@ -130,7 +134,6 @@ class MyProfile extends React.Component {
       });
     }
     this.getComments(pageNum).then(() => {
-      console.log(this.state.my_comments);
     });
   }
 }

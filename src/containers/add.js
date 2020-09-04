@@ -315,7 +315,7 @@ class Popup extends React.Component {
       "MIYAZAKI",
       "KAGOSHIMA",
       "OKINAWA",
-      "ERROR",
+      "TOKYO",//位置情報登録していない場合
     ];
     let ElementNumber = 47;
     //都道府県の要素番号を取得

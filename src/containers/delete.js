@@ -1,7 +1,9 @@
 import React from "react";
 import "./delete.css";
 import { deleteRequest } from "../api/Request";
+import { Link } from "react-router-dom";
 import Loading from "./loading";
+
 
 class Delete extends React.Component {
   constructor() {
@@ -39,6 +41,21 @@ class Delete extends React.Component {
               <span className="delete_button_text">DELETE</span>
             </button>
           </div>
+          <button className="cancel_button" onClick={this.props.closePopup}>
+            <span className="cancel_button_text">CANCEL</span>
+          </button>
+          <Link to="/profile">
+            <button
+              className="delete_button"
+              onClick={this.deletePost.bind(
+                this,
+                this.props.comment_id,
+                this.props.response_id
+              )}
+            >
+              <span className="delete_button_text">DELETE</span>
+            </button>
+          </Link>
         </div>
       </>
     );
