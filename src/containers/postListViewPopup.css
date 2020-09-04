@@ -40,7 +40,7 @@
 
 .prefecture_name {
   display: inline-block;
-  margin-top: 20px; 
+  margin-top: 20px;
 
   font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
@@ -59,10 +59,14 @@
 }
 
 .back_button_left {
-  margin-top: 10px;
-  margin-left: 20px;
+  position: absolute;
+  bottom: 0px;
+  left: 5%;
 }
 
 .popup_buttonContainer {
   /*TODO*/
+  position: absolute;
+  bottom: 0px;
+  right: 5%;
 }
