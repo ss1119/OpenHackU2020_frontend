@@ -33,7 +33,7 @@ class Map extends React.Component {
     return (
       <div>
         <MapArea>
-          <MapContent id="MapStyle" width="600px" height="600px"  />
+          <MapContent id="MapStyle" width="600px" height="600px" />
         </MapArea>
         {this.state.showPopup ? (
           <Popup
@@ -52,6 +52,9 @@ class Map extends React.Component {
         .getElementById(color.Prefecture);
       //色塗り
       element.setAttribute("fill", color.Color);
+      if (color.Color != "#ffffff") {
+        element.setAttribute("opacity", 0.4);
+      }
       //イベント処理
       element.addEventListener(
         "click",
@@ -93,7 +96,9 @@ class Popup extends React.Component {
           <div className="buttons_area">
             <img
               src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
-              onClick={this.props.closePopup}
+              onClick={() => {
+                this.props.closePopup();
+              }}
               className="back_button_left"
               alt="戻る"
             ></img>

@@ -19,7 +19,7 @@ class SignUp extends React.Component {
       <div>
         <div className="title_back">
           <div className="title_area"></div>
-          <div className="title_text">title</div>
+          <div className="title_text">emore</div>
         </div>
         <div className="under_back">
           <div className="under_back_rectangle"></div>

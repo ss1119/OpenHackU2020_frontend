@@ -177,7 +177,7 @@
 
 .buttonContainer {
   position: absolute;
-  bottom: 180px;
+  bottom: -30px;
   right: 5%;
 }
 .scroll_button {
