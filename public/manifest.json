@@ -3,13 +3,12 @@
     "name": "emore",
     "icons": [
       {
-        "src": "emore_icon_gra.png",
+        "src": "emore_icon.png",
         "type": "image/png",
         "sizes": "500x500"
       }
     ],
-    "start_url": "/home",
-    "description": "Emotion Share",
+    "start_url": "/",
     "display": "standalone",
     "theme_color": "#c4e4fc",
     "background_color": "#ffffff"
