@@ -78,7 +78,7 @@ class Map extends React.Component {
             (res) => {
               this.setState({
                 comments: res,
-                prefecture: color.Prefecture
+                prefecture: color.Prefecture,
                 isLoading: false,
               });
             }
