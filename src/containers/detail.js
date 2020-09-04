@@ -3,6 +3,7 @@ import "./detail.css";
 import Response from "./responseView.js";
 import { post } from "../api/Request";
 import { convertIDtoContentColor, convertIDtoBorderColor } from "./color.js";
+import { Link } from "react-router-dom";
 
 class detail extends React.Component {
   constructor() {
@@ -59,12 +60,14 @@ class detail extends React.Component {
               maxLength="100"
               placeholder="response…"
             ></input>
-            <img
-              src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
-              onClick={this.onSend.bind(this)}
-              className="detail_send_button"
-              alt="返信送信"
-            ></img>
+            <Link to="/profile">
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
+                onClick={this.onSend.bind(this)}
+                className="detail_send_button"
+                alt="返信送信"
+              ></img>
+            </Link>
           </>
           <div className="responses_area">{responses}</div>
           <img

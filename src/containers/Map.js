@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { get } from "../api/Request";
 import "./postListViewPopup.css";
 import PostListView from "./postListView";
+import { Link } from "react-router-dom";
 
 class Map extends React.Component {
   constructor() {
@@ -24,6 +25,7 @@ class Map extends React.Component {
       this.setColorsAndEvent();
     });
   }
+
   render() {
     const MapArea = styled.div`
       position: absolute;
@@ -94,14 +96,13 @@ class Popup extends React.Component {
             <PostListView comments={this.props.comments} />
           </div>
           <div className="buttons_area">
-            <img
-              src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
-              onClick={() => {
-                this.props.closePopup();
-              }}
-              className="back_button_left"
-              alt="戻る"
-            ></img>
+            <Link to="/home">
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
+                className="back_button_left"
+                alt="戻る"
+              ></img>
+            </Link>
           </div>
         </div>
       </div>
