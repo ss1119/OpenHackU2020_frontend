@@ -9,6 +9,7 @@
       }
     ],
     "start_url": "/home",
+    "description": "Emotion Share",
     "display": "standalone",
     "theme_color": "#c4e4fc",
     "background_color": "#ffffff"
