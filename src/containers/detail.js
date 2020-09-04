@@ -50,48 +50,23 @@ class detail extends React.Component {
             <div className="detail_post_line"></div>
             <div className="detail_post_comment">{this.props.comment}</div>
           </div>
-          {this.props.mine === false ? (
-            <>
-              <input
-                type="text"
-                className="detail_response_area"
-                maxLength="100"
-                placeholder="response…"
-                disabled
-              ></input>
-              <img
-                src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
-                className="detail_send_button"
-                alt="返信送信"
-              ></img>
-            </>
-          ) : (
-            <>
-              <input
-                value={this.state.response}
-                type="text"
-                onChange={this.onChangeResponse.bind(this)}
-                className="detail_response_area"
-                maxLength="100"
-                placeholder="response…"
-              ></input>
-              <button onClick={this.onSend.bind(this)}>
-                <img
-                  src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
-                  onClick={this.props.closePopup}
-                  className="detail_send_button"
-                  alt="返信送信"
-                ></img>
-              </button>
-            </>
-          )}
-          <div className="responses_area">
-            {responses}
-            <br />
-            <br />
-            <br />
-            <br />
-          </div>
+          <>
+            <input
+              value={this.state.response}
+              type="text"
+              onChange={this.onChangeResponse.bind(this)}
+              className="detail_response_area"
+              maxLength="100"
+              placeholder="response…"
+            ></input>
+            <img
+              src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
+              onClick={this.onSend.bind(this)}
+              className="detail_send_button"
+              alt="返信送信"
+            ></img>
+          </>
+          <div className="responses_area">{responses}</div>
           <img
             src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
             onClick={this.props.closePopup}
