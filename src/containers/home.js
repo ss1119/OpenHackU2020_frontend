@@ -6,6 +6,15 @@ import Map from "./Map.js";
 import { Link } from "react-router-dom";
 
 class Home extends React.Component {
+  zoomIn() {
+    document.getElementById("MapStyle").setAttribute("width", "5000px");
+    document.getElementById("MapStyle").setAttribute("height", "5000px");
+  }
+  zoomOut() {
+    document.getElementById("MapStyle").setAttribute("width", "600px");
+    document.getElementById("MapStyle").setAttribute("height", "600px");
+  }
+
   render() {
     const HomeArea = styled.div`
       width: 375px;
@@ -36,6 +45,22 @@ class Home extends React.Component {
                 alt="profile"
               ></img>
             </Link>
+          </div>
+          <div className="zoom_in_button">
+            <img
+              src={`${process.env.PUBLIC_URL}/Button/拡大アイコン.png`}
+              className="zoom_button_icon"
+              alt="zoom"
+              onClick={this.zoomIn.bind(this)}
+            ></img>
+          </div>
+          <div className="zoom_out_button">
+            <img
+              src={`${process.env.PUBLIC_URL}/Button/縮小アイコン.png`}
+              className="zoom_button_icon"
+              alt="zoom"
+              onClick={this.zoomOut.bind(this)}
+            ></img>
           </div>
         </div>
         <AddPage />

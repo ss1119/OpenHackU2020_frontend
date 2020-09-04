@@ -1,7 +1,7 @@
 .profile_area {
   /* 枠_ffffff */
 
-  position: absolute;
+  position: fixed;
   width: 365px;
   height: 80%;
   left: 50%;
@@ -64,7 +64,7 @@
 .name_area {
   /* name */
 
-  position: absolute;
+  position: fixed;
   width: 335px;
   height: 99px;
   left: 50%;
