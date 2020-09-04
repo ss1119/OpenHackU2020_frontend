@@ -207,6 +207,10 @@ class Popup extends React.Component {
     return axios
       .get(url)
       .then((res) => {
+        console.log(res)
+        const checkPermision = res.data;
+        if(checkPermision.status === 400) return this.convertKanjiToAlphabet("");
+
         const placeData = res.data.result;
         const prefectureKanji = placeData.prefecture.pname;
         return this.convertKanjiToAlphabet(prefectureKanji);
@@ -323,7 +327,7 @@ class Popup extends React.Component {
     ElementNumber = Kanji.indexOf(prefecture);
     //都道府県以外である時の処理
     if (ElementNumber === -1) {
-      ElementNumber = 46;
+      ElementNumber = 47;
     }
     return Alphabet[ElementNumber];
   }
