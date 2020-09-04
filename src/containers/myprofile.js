@@ -1,7 +1,6 @@
 import React from "react";
 import PostListView from "./postListView.js";
 import Edit from "./edit.js";
-import Delete from "./delete.js";
 import "./myprofile.css";
 import { get } from "../api/Request.js";
 
