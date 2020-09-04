@@ -2,12 +2,14 @@ import React from "react";
 import "./home.css";
 import "./signUp.css";
 import { post } from "../api/Request";
+import Loading from "./loading";
 
 class SignUp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userName: "",
+      isLoading: false,
     };
   }
 
@@ -17,6 +19,7 @@ class SignUp extends React.Component {
     }
     return (
       <div>
+        <Loading isLoading={this.state.idLoading} />
         <div className="title_back">
           <div className="title_area"></div>
           <div className="title_text">title</div>
@@ -61,12 +64,21 @@ class SignUp extends React.Component {
     if (this.state.userName === "") {
       alert("名前を入力してください");
     } else {
+      this.setState({
+        isLoading: true,
+      });
       post("/user/register", { name: this.state.userName }).then((res) => {
         if (res.ID !== 0) {
+          this.setState({
+            isLoading: false,
+          });
           localStorage.setItem("userId", res.ID);
           localStorage.setItem("userName", res.Name);
           this.props.history.push("/home");
         } else {
+          this.setState({
+            isLoading: false,
+          });
           alert("この名前は使用できません");
         }
       });

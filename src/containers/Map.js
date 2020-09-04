@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { get } from "../api/Request";
 import "./postListViewPopup.css";
 import PostListView from "./postListView";
+import Loading from "./loading";
 
 class Map extends React.Component {
   constructor() {
@@ -14,12 +15,17 @@ class Map extends React.Component {
       colors: [],
       comments: [],
       showPopup: false,
+      idLoading: false,
     };
   }
   componentDidMount() {
+    this.setState({
+      isLoading: true,
+    });
     get("/emotion/prefectures").then((res) => {
       this.setState({
         colors: res,
+        isLoading: false,
       });
       this.setColorsAndEvent();
     });
@@ -32,8 +38,9 @@ class Map extends React.Component {
     `;
     return (
       <div>
+        <Loading isLoading={this.state.idLoading} />
         <MapArea>
-          <MapContent id="MapStyle" width="600px" height="600px"  />
+          <MapContent id="MapStyle" width="600px" height="600px" />
         </MapArea>
         {this.state.showPopup ? (
           <Popup
@@ -46,6 +53,9 @@ class Map extends React.Component {
   }
 
   async setColorsAndEvent() {
+    this.setState({
+      isLoading: true,
+    });
     this.state.colors.map((color) => {
       let element = document
         .getElementById("MapStyle")
@@ -60,6 +70,7 @@ class Map extends React.Component {
             (res) => {
               this.setState({
                 comments: res,
+                isLoading: false,
               });
               console.log(this.state.comments);
             }

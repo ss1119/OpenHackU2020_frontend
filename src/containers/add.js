@@ -1,6 +1,7 @@
 import React from "react";
 import "./add.css";
 import { post } from "../api/Request";
+import Loading from "./loading";
 
 class Popup extends React.Component {
   constructor() {
@@ -11,6 +12,7 @@ class Popup extends React.Component {
       comment: "",
       lat: null,
       lng: null,
+      isLoading: false,
     };
   }
 
@@ -31,125 +33,128 @@ class Popup extends React.Component {
 
   render() {
     return (
-      <div className="popup">
-        <div className="popup_inner">
-          <div className="item_emotion">emotion</div>
-          <div className="line_emotion"></div>
-          <div className="emotions_button">
-            <div className="joy_back"></div>
+      <>
+        <Loading isLoading={this.state.idLoading} />
+        <div className="popup">
+          <div className="popup_inner">
+            <div className="item_emotion">emotion</div>
+            <div className="line_emotion"></div>
+            <div className="emotions_button">
+              <div className="joy_back"></div>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/0.png`}
+                className="j1_button"
+                onClick={this.onChoice.bind(this, "0")}
+                alt="喜"
+              ></img>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/1.png`}
+                className="j2_button"
+                onClick={this.onChoice.bind(this, "1")}
+                alt="喜"
+              ></img>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/2.png`}
+                className="j3_button"
+                onClick={this.onChoice.bind(this, "2")}
+                alt="喜"
+              ></img>
+              <div className="angry_back"></div>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/3.png`}
+                className="a1_button"
+                onClick={this.onChoice.bind(this, "3")}
+                alt="怒"
+              ></img>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/4.png`}
+                className="a2_button"
+                onClick={this.onChoice.bind(this, "4")}
+                alt="怒"
+              ></img>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/5.png`}
+                className="a3_button"
+                onClick={this.onChoice.bind(this, "5")}
+                alt="怒"
+              ></img>
+              <div className="sad_back"></div>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/6.png`}
+                className="s1_button"
+                onClick={this.onChoice.bind(this, "6")}
+                alt="哀"
+              ></img>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/7.png`}
+                className="s2_button"
+                onClick={this.onChoice.bind(this, "7")}
+                alt="哀"
+              ></img>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/8.png`}
+                className="s3_button"
+                onClick={this.onChoice.bind(this, "8")}
+                alt="哀"
+              ></img>
+              <div className="happy_back"></div>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/9.png`}
+                className="h1_button"
+                onClick={this.onChoice.bind(this, "9")}
+                alt="楽"
+              ></img>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/10.png`}
+                className="h2_button"
+                onClick={this.onChoice.bind(this, "10")}
+                alt="楽"
+              ></img>
+              <img
+                src={`${process.env.PUBLIC_URL}/face/11.png`}
+                className="h3_button"
+                onClick={this.onChoice.bind(this, "11")}
+                alt="楽"
+              ></img>
+            </div>
+            <div className="item_youremotion">your emotion</div>
+            <div className="line_youremotion"></div>
+            {this.state.isChoice ? (
+              <img
+                src={
+                  `${process.env.PUBLIC_URL}/face/` +
+                  this.state.selectedEmotionId +
+                  `.png`
+                }
+                className="choice_emotion"
+                alt="your emotion"
+              ></img>
+            ) : null}
+            <div className="item_comment">comment</div>
+            <div className="line_comment"></div>
+            <textarea
+              name="comment"
+              type="text"
+              className="comment_area"
+              maxLength="100"
+              value={this.state.comment}
+              onChange={this.onChangeComment.bind(this)}
+            ></textarea>
             <img
-              src={`${process.env.PUBLIC_URL}/face/0.png`}
-              className="j1_button"
-              onClick={this.onChoice.bind(this, "0")}
-              alt="喜"
+              src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
+              onClick={this.props.closePopup}
+              className="back_button"
+              alt="戻る"
             ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/1.png`}
-              className="j2_button"
-              onClick={this.onChoice.bind(this, "1")}
-              alt="喜"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/2.png`}
-              className="j3_button"
-              onClick={this.onChoice.bind(this, "2")}
-              alt="喜"
-            ></img>
-            <div className="angry_back"></div>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/3.png`}
-              className="a1_button"
-              onClick={this.onChoice.bind(this, "3")}
-              alt="怒"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/4.png`}
-              className="a2_button"
-              onClick={this.onChoice.bind(this, "4")}
-              alt="怒"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/5.png`}
-              className="a3_button"
-              onClick={this.onChoice.bind(this, "5")}
-              alt="怒"
-            ></img>
-            <div className="sad_back"></div>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/6.png`}
-              className="s1_button"
-              onClick={this.onChoice.bind(this, "6")}
-              alt="哀"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/7.png`}
-              className="s2_button"
-              onClick={this.onChoice.bind(this, "7")}
-              alt="哀"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/8.png`}
-              className="s3_button"
-              onClick={this.onChoice.bind(this, "8")}
-              alt="哀"
-            ></img>
-            <div className="happy_back"></div>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/9.png`}
-              className="h1_button"
-              onClick={this.onChoice.bind(this, "9")}
-              alt="楽"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/10.png`}
-              className="h2_button"
-              onClick={this.onChoice.bind(this, "10")}
-              alt="楽"
-            ></img>
-            <img
-              src={`${process.env.PUBLIC_URL}/face/11.png`}
-              className="h3_button"
-              onClick={this.onChoice.bind(this, "11")}
-              alt="楽"
-            ></img>
+            <button
+              className="add_button"
+              onClick={this.onClickAddButton.bind(this)}
+            >
+              add
+            </button>
           </div>
-          <div className="item_youremotion">your emotion</div>
-          <div className="line_youremotion"></div>
-          {this.state.isChoice ? (
-            <img
-              src={
-                `${process.env.PUBLIC_URL}/face/` +
-                this.state.selectedEmotionId +
-                `.png`
-              }
-              className="choice_emotion"
-              alt="your emotion"
-            ></img>
-          ) : null}
-          <div className="item_comment">comment</div>
-          <div className="line_comment"></div>
-          <textarea
-            name="comment"
-            type="text"
-            className="comment_area"
-            maxLength="100"
-            value={this.state.comment}
-            onChange={this.onChangeComment.bind(this)}
-          ></textarea>
-          <img
-            src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
-            onClick={this.props.closePopup}
-            className="back_button"
-            alt="戻る"
-          ></img>
-          <button
-            className="add_button"
-            onClick={this.onClickAddButton.bind(this)}
-          >
-            add
-          </button>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -174,12 +179,21 @@ class Popup extends React.Component {
         longtitude: 0,
         prefecture: prefecture,
       };
+      this.setState({
+        isLoading: true,
+      });
       post("/comment/register", body).then((res) => {
         if (res.hasSuccess) {
+          this.setState({
+            isLoading: false,
+          });
           alert("感情を登録しました！");
           this.props.closePopup();
           //画面リロードの処理が必要！
         } else {
+          this.setState({
+            isLoading: false,
+          });
           alert("感情を登録できませんでした");
         }
       });
