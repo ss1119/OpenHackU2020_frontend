@@ -87,7 +87,17 @@ class Popup extends React.Component {
     return (
       <div className="popup_from_map">
         <div className="popup_inner_from_map">
-          <PostListView comments={this.props.comments} />
+          <div className="post_list_container">
+            <PostListView comments={this.props.comments} />
+          </div>
+          <div className="buttons_area">
+            <img
+              src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
+              onClick={this.props.closePopup}
+              className="back_button_left"
+              alt="戻る"
+            ></img>
+          </div>
         </div>
       </div>
     );

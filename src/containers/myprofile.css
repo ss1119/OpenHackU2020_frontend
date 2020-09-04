@@ -138,25 +138,14 @@
   left: 288px;
   top: 16px;
 }
-.post_area {
-  /* 投稿履歴 */
-
-  position: absolute;
-  width: 346px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, 0%);
-  top: 432px;
-}
 .post_title {
   /* post */
 
   position: absolute;
   width: 48px;
   height: 28px;
-  left: 15px;
-  top: -190px;
+  left: 25px;
+  top: -30px;
 
   font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
@@ -190,4 +179,18 @@
   position: absolute;
   bottom: 180px;
   right: 5%;
+}
+.scroll_button {
+  background: #efefef;
+
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid #4b4b4b;
+
+  font-family: "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+  color: #4b4b4b;
 }
