@@ -13,6 +13,7 @@ class Map extends React.Component {
       lng: null,
       colors: [],
       comments: [],
+      prefecture: "",
       showPopup: false,
     };
   }
@@ -39,6 +40,7 @@ class Map extends React.Component {
           <Popup
             closePopup={this.togglePopup.bind(this)}
             comments={this.state.comments}
+            prefecture={this.state.prefecture}
           />
         ) : null}
       </div>
@@ -60,6 +62,7 @@ class Map extends React.Component {
             (res) => {
               this.setState({
                 comments: res,
+                prefecture: color.Prefecture
               });
             }
           );
@@ -86,6 +89,9 @@ class Popup extends React.Component {
     return (
       <div className="popup_from_map">
         <div className="popup_inner_from_map">
+          <div className="prefecture_area">
+            <span className="prefecture_name">{this.props.prefecture}</span>
+          </div>
           <div className="post_list_container">
             <PostListView comments={this.props.comments} />
           </div>

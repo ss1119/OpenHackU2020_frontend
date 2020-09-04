@@ -26,12 +26,36 @@
 .post_list_container {
   overflow: scroll;
   width: 100%;
-  height: 90%;
+  height: 75%;
+  /*max-height: 450px;*/
+}
+
+.prefecture_area {
+  width: 100%;
+  height: 80px;
+  border-bottom: 2px solid;
+  border-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.prefecture_name {
+  display: inline-block;
+  margin-top: 20px; 
+
+  font-family: "Trebuchet MS", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 28px;
+
+  color: #4b4b4b;
 }
 
 .buttons_area {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  height: 10%;
+  height: 70px;
 }
 
 .back_button_left {
