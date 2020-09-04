@@ -1,6 +1,7 @@
 import React from "react";
 import "./edit.css";
 import { patch } from "../api/Request";
+import { Link } from "react-router-dom";
 
 class Edit extends React.Component {
   constructor() {
@@ -28,9 +29,11 @@ class Edit extends React.Component {
             placeholder={this.state.userName}
             className="edit_form"
           ></input>
-          <button className="OK_button" onClick={this.onEdit.bind(this)}>
-            OK
-          </button>
+          <Link to="/profile">
+            <button className="OK_button" onClick={this.onEdit.bind(this)}>
+              OK
+            </button>
+          </Link>
         </div>
       </div>
     );
@@ -51,7 +54,7 @@ class Edit extends React.Component {
         newName: this.state.userName,
       }).then((res) => {
         if (res.ID !== 0) {
-          localStorage.setItem("userName", this.state.userName)
+          localStorage.setItem("userName", this.state.userName);
           this.props.closePopup();
         } else {
           alert("この名前は使用できません");

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { get } from "../api/Request";
 import "./postListViewPopup.css";
 import PostListView from "./postListView";
+import { Link } from "react-router-dom";
 
 class Map extends React.Component {
   constructor() {
@@ -25,6 +26,7 @@ class Map extends React.Component {
       this.setColorsAndEvent();
     });
   }
+
   render() {
     const MapArea = styled.div`
       position: absolute;
@@ -34,7 +36,7 @@ class Map extends React.Component {
     return (
       <div>
         <MapArea>
-          <MapContent id="MapStyle" width="600px" height="600px"  />
+          <MapContent id="MapStyle" width="600px" height="600px" />
         </MapArea>
         {this.state.showPopup ? (
           <Popup
@@ -54,6 +56,9 @@ class Map extends React.Component {
         .getElementById(color.Prefecture);
       //色塗り
       element.setAttribute("fill", color.Color);
+      if (color.Color != "#ffffff") {
+        element.setAttribute("opacity", 0.4);
+      }
       //イベント処理
       element.addEventListener(
         "click",
@@ -108,12 +113,13 @@ class Popup extends React.Component {
             <PostListView comments={this.state.comments} />
           </div>
           <div className="popup_buttons">
-            <img
-              src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
-              onClick={this.props.closePopup}
-              className="back_button_left"
-              alt="戻る"
-            ></img>
+            <Link to="/home">
+              <img
+                src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
+                className="back_button_left"
+                alt="戻る"
+              ></img>
+            </Link>
             {this.state.comments.length !== 0 ? (
             <div className="popup_buttonContainer">
               <button
