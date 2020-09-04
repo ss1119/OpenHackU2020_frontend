@@ -15,7 +15,7 @@ class Profile extends React.Component {
       <HomeArea>
         <div className="title_back">
           <div className="title_area">
-            <div className="title_text">title</div>
+            <div className="title_text">emore</div>
           </div>
         </div>
         <MyProfile />

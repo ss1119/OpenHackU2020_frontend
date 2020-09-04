@@ -38,7 +38,10 @@ class Map extends React.Component {
           <MapContent id="MapStyle" />
         </MapArea>
         {this.state.showPopup ? (
-          <Popup closePopup={this.togglePopup.bind(this)} comments={this.state.comments}/>
+          <Popup
+            closePopup={this.togglePopup.bind(this)}
+            comments={this.state.comments}
+          />
         ) : null}
       </div>
     );
@@ -52,15 +55,21 @@ class Map extends React.Component {
       //色塗り
       element.setAttribute("fill", color.Color);
       //イベント処理
-      element.addEventListener("click", async () => {
-        await get("/emotion/"+color.Prefecture+"/comments").then((res) => {
-          this.setState({
-            comments: res
-          });
-          console.log(this.state.comments)
-        });
-        this.togglePopup()
-      }, false)
+      element.addEventListener(
+        "click",
+        async () => {
+          await get("/emotion/" + color.Prefecture + "/comments").then(
+            (res) => {
+              this.setState({
+                comments: res,
+              });
+              console.log(this.state.comments);
+            }
+          );
+          this.togglePopup();
+        },
+        false
+      );
     });
   }
 
@@ -80,7 +89,7 @@ class Popup extends React.Component {
     return (
       <div className="popup_from_map">
         <div className="popup_inner_from_map">
-          <PostListView comments={this.props.comments}/>
+          <PostListView comments={this.props.comments} />
         </div>
       </div>
     );

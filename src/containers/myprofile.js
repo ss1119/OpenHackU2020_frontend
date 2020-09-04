@@ -1,6 +1,7 @@
 import React from "react";
 import PostListView from "./postListView.js";
 import Edit from "./edit.js";
+import Delete from "./delete.js";
 import "./myprofile.css";
 import { get } from "../api/Request.js";
 
@@ -9,15 +10,17 @@ class MyProfile extends React.Component {
     super();
     this.state = {
       showPopup_edit: false,
+      showPopup_delete: false,
       my_comments: [],
       page_num: 1,
-      page_size: 3
+      page_size: 3,
+      selected_comment_id: null,
     };
   }
 
   componentDidMount() {
     this.getComments(1).then(() => {
-      console.log(this.state.my_comments)
+      console.log(this.state.my_comments);
     });
   }
 
@@ -50,55 +53,72 @@ class MyProfile extends React.Component {
             ></img>
           </div>
         </div>
-        <div className="paginateContainer">
-        {
-          this.state.my_comments != [] ? (
-            <PostListView className="postList" comments={this.state.my_comments}/>
-          ) : null
-        }
+        <div className="post_area">
+          <div className="post_title">post</div>
+        </div>
         {this.state.showPopup_edit ? (
           <Edit closePopup={this.togglePopup_edit.bind(this)} />
         ) : null}
-          <div className="buttonContainer">
-            <button onClick={this.previousPage.bind(this)}>
-              ＜前へ
-            </button>
-            <button onClick={this.nextPage.bind(this)}>
-              次へ＞
-            </button>
-          </div>
+        {this.state.showPopup_delete ? (
+          <Delete closePopup={this.togglePopup_delete.bind(this)} />
+        ) : null}
+        <div className="paginateContainer">
+          {this.state.my_comments.length !== 0 ? (
+            <PostListView
+              className="postList"
+              comments={this.state.my_comments}
+            />
+          ) : null}
+          {this.state.my_comments.length !== 0 ? (
+            <div className="buttonContainer">
+              <button onClick={this.previousPage.bind(this)}>＜前へ</button>
+              <button onClick={this.nextPage.bind(this)}>次へ＞</button>
+            </div>
+          ) : null}
         </div>
+        {this.state.showPopup_edit ? (
+          <Edit closePopup={this.togglePopup_edit.bind(this)} />
+        ) : null}
       </div>
     );
   }
 
   async getComments(pageNum) {
-    const myComments = await get("emotion/mycomments/"+localStorage.getItem("userId")+"/"+pageNum+"/"+this.state.page_size)
-    this.setState({
-      my_comments: myComments
-    })
+    const myComments = await get(
+      "emotion/mycomments/" +
+        localStorage.getItem("userId") +
+        "/" +
+        pageNum +
+        "/" +
+        this.state.page_size
+    );
+    if (myComments.length !== 0) {
+      this.setState({
+        my_comments: myComments,
+      });
+    }
   }
 
   previousPage() {
     let pageNum = this.state.page_num - 1;
-    if(pageNum < 1) pageNum = 1; 
+    if (pageNum < 1) pageNum = 1;
     this.setState({
-      page_num: pageNum
-    })
+      page_num: pageNum,
+    });
     this.getComments(pageNum).then(() => {
-      console.log(this.state.my_comments)
+      console.log(this.state.my_comments);
     });
   }
 
   nextPage() {
     let pageNum = this.state.page_num + 1;
-    if(this.state.my_comments.length != 0) {
+    if (this.state.my_comments.length != 0) {
       this.setState({
-        page_num: pageNum
-      })
+        page_num: pageNum,
+      });
     }
     this.getComments(pageNum).then(() => {
-      console.log(this.state.my_comments)
+      console.log(this.state.my_comments);
     });
   }
 }
