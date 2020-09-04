@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 
 class Home extends React.Component {
   zoomIn() {
-    document.getElementById("MapStyle").setAttribute("width", "5000px");
-    document.getElementById("MapStyle").setAttribute("height", "5000px");
+    document.getElementById("MapStyle").setAttribute("width", "3000px");
+    document.getElementById("MapStyle").setAttribute("height", "3000px");
   }
   zoomOut() {
     document.getElementById("MapStyle").setAttribute("width", "600px");
@@ -22,7 +22,7 @@ class Home extends React.Component {
     `;
     return (
       <HomeArea>
-        <Map />
+        <Map/>
         <div className="title_back">
           <div className="title_area">
             <div className="title_text">emore</div>
