@@ -30,32 +30,19 @@ class Delete extends React.Component {
             <button className="cancel_button" onClick={this.props.closePopup}>
               <span className="cancel_button_text">CANCEL</span>
             </button>
-            <button
-              className="delete_button"
-              onClick={this.deletePost.bind(
-                this,
-                this.props.comment_id,
-                this.props.response_id
-              )}
-            >
-              <span className="delete_button_text">DELETE</span>
-            </button>
+            <Link to="/profile">
+              <button
+                className="delete_button"
+                onClick={this.deletePost.bind(
+                  this,
+                  this.props.comment_id,
+                  this.props.response_id
+                )}
+              >
+                <span className="delete_button_text">DELETE</span>
+              </button>
+            </Link>
           </div>
-          <button className="cancel_button" onClick={this.props.closePopup}>
-            <span className="cancel_button_text">CANCEL</span>
-          </button>
-          <Link to="/profile">
-            <button
-              className="delete_button"
-              onClick={this.deletePost.bind(
-                this,
-                this.props.comment_id,
-                this.props.response_id
-              )}
-            >
-              <span className="delete_button_text">DELETE</span>
-            </button>
-          </Link>
         </div>
       </>
     );

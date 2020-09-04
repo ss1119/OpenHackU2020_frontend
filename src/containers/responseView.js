@@ -7,7 +7,6 @@ class responseView extends React.Component {
       <div className="response_frame">
         <div className="response_name">{this.props.user_name}</div>
         <div className="response_response">{this.props.response}</div>
-        <div className="response_time">{this.props.date_time}</div>
       </div>
     );
   }

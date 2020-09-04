@@ -323,7 +323,7 @@ class Popup extends React.Component {
     ElementNumber = Kanji.indexOf(prefecture);
     //都道府県以外である時の処理
     if (ElementNumber === -1) {
-      ElementNumber = 47;
+      ElementNumber = 46;
     }
     return Alphabet[ElementNumber];
   }

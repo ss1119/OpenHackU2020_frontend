@@ -83,7 +83,7 @@ class Map extends React.Component {
               });
             }
           );
-          if(this.state.comments.length != 0) this.togglePopup();
+          this.togglePopup();
         },
         false
       );
