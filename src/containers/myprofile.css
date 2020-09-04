@@ -138,25 +138,14 @@
   left: 288px;
   top: 16px;
 }
-.post_area {
-  /* 投稿履歴 */
-
-  position: absolute;
-  width: 346px;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, 0%);
-  top: 432px;
-}
 .post_title {
   /* post */
 
   position: absolute;
   width: 48px;
   height: 28px;
-  left: 15px;
-  top: -190px;
+  left: 25px;
+  top: -30px;
 
   font-family: "Trebuchet MS", sans-serif;
   font-style: normal;

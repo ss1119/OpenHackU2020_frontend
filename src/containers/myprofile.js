@@ -53,16 +53,8 @@ class MyProfile extends React.Component {
             ></img>
           </div>
         </div>
-        <div className="post_area">
-          <div className="post_title">post</div>
-        </div>
-        {this.state.showPopup_edit ? (
-          <Edit closePopup={this.togglePopup_edit.bind(this)} />
-        ) : null}
-        {this.state.showPopup_delete ? (
-          <Delete closePopup={this.togglePopup_delete.bind(this)} />
-        ) : null}
         <div className="paginateContainer">
+          <div className="post_title">post</div>
           {this.state.my_comments.length !== 0 ? (
             <PostListView
               className="postList"

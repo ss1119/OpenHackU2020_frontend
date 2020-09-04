@@ -10,6 +10,9 @@
   border-radius: 20px;
 }
 .response_name {
+  position: relative;
+  top: -10px;
+  left: -40%;
   font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
   font-weight: 300;
@@ -20,8 +23,8 @@
   color: #4b4b4b;
 }
 .response_response {
-  left: 50px;
-  top: 27px;
+  position: relative;
+  top: -5px;
 
   font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
@@ -29,12 +32,16 @@
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   color: #4b4b4b;
 }
 .response_time {
-  left: 288px;
-  top: 48px;
+  position: relative;
+  left: 40%;
+  top: -5px;
 
   font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
@@ -42,6 +49,9 @@
   font-size: 18px;
   line-height: 21px;
   text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   color: #4b4b4b;
 }
