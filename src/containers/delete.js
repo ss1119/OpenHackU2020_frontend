@@ -2,20 +2,44 @@ import React from "react";
 import "./delete.css";
 import { deleteRequest } from "../api/Request";
 import { Link } from "react-router-dom";
+import Loading from "./loading";
+
 
 class Delete extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      idLoading: false,
+    };
+  }
   render() {
     return (
-      <div className="popup">
-        <div className="delete_area">
-          <div className="delete_message">
-            <div className="delete_message_text">
-              Are you sure
-              <br />
-              you want to delete
-              <br />
-              this post?
+      <>
+        <Loading isLoading={this.state.idLoading} />
+        <div className="popup">
+          <div className="delete_area">
+            <div className="delete_message">
+              <div className="delete_message_text">
+                Are you sure
+                <br />
+                you want to delete
+                <br />
+                this post?
+              </div>
             </div>
+            <button className="cancel_button" onClick={this.props.closePopup}>
+              <span className="cancel_button_text">CANCEL</span>
+            </button>
+            <button
+              className="delete_button"
+              onClick={this.deletePost.bind(
+                this,
+                this.props.comment_id,
+                this.props.response_id
+              )}
+            >
+              <span className="delete_button_text">DELETE</span>
+            </button>
           </div>
           <button className="cancel_button" onClick={this.props.closePopup}>
             <span className="cancel_button_text">CANCEL</span>
@@ -33,7 +57,7 @@ class Delete extends React.Component {
             </button>
           </Link>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -45,13 +69,25 @@ class Delete extends React.Component {
   }
 
   deleteComment(id) {
+    this.setState({
+      isLoading: true,
+    });
     deleteRequest("/comment/delete", { comment_id: id }).then(() => {
+      this.setState({
+        isLoading: false,
+      });
       this.props.closePopup();
     });
   }
 
   deleteResponse(id) {
+    this.setState({
+      isLoading: true,
+    });
     deleteRequest("/comment/response/delete", { response_id: id }).then(() => {
+      this.setState({
+        isLoading: false,
+      });
       this.props.closePopup();
     });
   }
