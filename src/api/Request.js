@@ -1,6 +1,7 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "https://open-hack-u-2020-backend.herokuapp.com/";
+axios.defaults.baseURL = "http://localhost:8080";
+// axios.defaults.baseURL = "https://open-hack-u-2020-backend.herokuapp.com/";
 axios.defaults.headers.post["Access-Control-Allow-Origin"] = "*";
 
 export function get(path) {
