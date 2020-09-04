@@ -1,30 +1,32 @@
 .post_frame {
   /* 枠 */
-
-  position: absolute;
-  width: 345px;
+  margin: 7px auto;
+  padding: 10px 3px;
+  width: 95%;
   height: 70px;
 
   box-sizing: border-box;
   border-radius: 20px;
+
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.post_fill {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 .post_emotion {
-  position: absolute;
   width: 50px;
   height: 50px;
-  left: 28px;
-  top: 10px;
 }
 .post_num {
   /* 件の返信 */
-
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, 0%);
-  -ms-transform: translate(-50%, 0%);
-  top: 27px;
-
   font-family: "Trebuchet MS", sans-serif;
   font-style: normal;
   font-weight: 300;
@@ -32,18 +34,24 @@
   line-height: 21px;
   /* identical to box height */
 
-  display: flex;
-  align-items: flex-end;
-  text-align: center;
-
   color: #4b4b4b;
 }
+
+.user_name {
+  font-family: "Trebuchet MS", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  color: #4b4b4b;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .post_garbage {
   /* 削除ボタン */
-
-  position: absolute;
   width: 35px;
-  height: 36px;
-  left: 293px;
-  top: 17px;
+  height: 35px;
 }

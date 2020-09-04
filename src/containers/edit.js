@@ -46,17 +46,15 @@ class Edit extends React.Component {
     if (this.state.userName === "") {
       alert("名前を入力してください");
     } else {
-      console.log();
       patch("/user/edit", {
         id: parseInt(localStorage.getItem("userId")),
         newName: this.state.userName,
       }).then((res) => {
         if (res.ID !== 0) {
-          localStorage.setItem("userId", res.ID);
-          localStorage.setItem("userName", res.Name);
           this.props.closePopup();
         } else {
           alert("この名前は使用できません");
+          this.props.closePopup();
         }
       });
     }

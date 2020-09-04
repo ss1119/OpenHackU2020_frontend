@@ -1,0 +1,55 @@
+.response_frame {
+  position: absolute;
+  width: 345px;
+  height: 70px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+
+  background: #ffffff;
+  border: 1px solid rgba(75, 75, 75, 0.3);
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.response_name {
+  position: absolute;
+  left: 18px;
+
+  font-family: "Trebuchet MS", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+
+  color: #4b4b4b;
+}
+.response_response {
+  position: absolute;
+  left: 50px;
+  top: 27px;
+
+  font-family: "Trebuchet MS", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+
+  color: #4b4b4b;
+}
+.response_time {
+  position: absolute;
+  left: 288px;
+  top: 48px;
+
+  font-family: "Trebuchet MS", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 21px;
+  text-align: center;
+
+  color: #4b4b4b;
+}
