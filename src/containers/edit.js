@@ -33,22 +33,12 @@ class Edit extends React.Component {
               placeholder={this.state.userName}
               className="edit_form"
             ></input>
-            <button className="OK_button" onClick={this.onEdit.bind(this)}>
-              OK
-            </button>
+            <Link to="/profile">
+              <button className="OK_button" onClick={this.onEdit.bind(this)}>
+                OK
+              </button>
+            </Link>
           </div>
-          <input
-            value={this.state.userName}
-            type="text"
-            onChange={this.onChangeUserName.bind(this)}
-            placeholder={this.state.userName}
-            className="edit_form"
-          ></input>
-          <Link to="/profile">
-            <button className="OK_button" onClick={this.onEdit.bind(this)}>
-              OK
-            </button>
-          </Link>
         </div>
       </>
     );

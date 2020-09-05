@@ -13,8 +13,8 @@ const ModalStyle = {
     bottom: "auto",
     transform: "translate(-50%,-50%)",
     textAlign: "center",
-    boder: "none",
-    background: "rgba(0,0,0,0)",
+    border: "none",
+    background: "rgba(0,0,0,0.5)",
   },
 };
 
@@ -27,9 +27,10 @@ const LoadingLabel = styled.p`
 class Loading extends React.Component {
   render() {
     return (
-      <Modal isOpen={this.props.isLoading} style={ModalStyle}>
-        <div className="loading" />
-        <LoadingLabel>Loading...</LoadingLabel>
+      <Modal isLoading={this.props.isLoading} style={ModalStyle}>
+        <div className="loading">
+          <LoadingLabel>Loading...</LoadingLabel>
+        </div>
       </Modal>
     );
   }

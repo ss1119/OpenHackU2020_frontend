@@ -20,6 +20,7 @@ class detail extends React.Component {
         ? this.props.responses.map((response) => {
             return (
               <Response
+                key={response.ID}
                 user_name={response.UserName}
                 response={response.Comment}
                 date_time={response.DateTime}
@@ -51,7 +52,6 @@ class detail extends React.Component {
                 alt="emotion"
               ></img>
               <div className="detail_post_name">{this.props.user_name}</div>
-              <div className="detail_post_time">{this.props.date_time}</div>
               <div className="detail_post_line"></div>
               <div className="detail_post_comment">{this.props.comment}</div>
             </div>
@@ -64,12 +64,14 @@ class detail extends React.Component {
                 maxLength="100"
                 placeholder="response…"
               ></input>
-              <img
-                src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
-                onClick={this.onSend.bind(this)}
-                className="detail_send_button"
-                alt="返信送信"
-              ></img>
+              <Link to="/profile">
+                <img
+                  src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
+                  onClick={this.onSend.bind(this)}
+                  className="detail_send_button"
+                  alt="返信送信"
+                ></img>
+              </Link>
             </>
             <div className="responses_area">{responses}</div>
             <img
@@ -79,31 +81,6 @@ class detail extends React.Component {
               alt="戻る"
             ></img>
           </div>
-          <>
-            <input
-              value={this.state.response}
-              type="text"
-              onChange={this.onChangeResponse.bind(this)}
-              className="detail_response_area"
-              maxLength="100"
-              placeholder="response…"
-            ></input>
-            <Link to="/profile">
-              <img
-                src={`${process.env.PUBLIC_URL}/Button/返信送信ボタン.png`}
-                onClick={this.onSend.bind(this)}
-                className="detail_send_button"
-                alt="返信送信"
-              ></img>
-            </Link>
-          </>
-          <div className="responses_area">{responses}</div>
-          <img
-            src={`${process.env.PUBLIC_URL}/Button/戻るボタン.png`}
-            onClick={this.props.closePopup}
-            className="detail_back_button"
-            alt="戻る"
-          ></img>
         </div>
       </>
     );

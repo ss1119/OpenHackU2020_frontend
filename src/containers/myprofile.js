@@ -21,7 +21,7 @@ class MyProfile extends React.Component {
 
   componentDidMount() {
     this.getComments(1).then(() => {
-      console.log(this.state.my_comments);
+      console.log("passed");
     });
   }
 

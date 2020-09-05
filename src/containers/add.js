@@ -207,6 +207,10 @@ class Popup extends React.Component {
     return axios
       .get(url)
       .then((res) => {
+        console.log(res)
+        const checkPermision = res.data;
+        if(checkPermision.status === 400) return this.convertKanjiToAlphabet("");
+
         const placeData = res.data.result;
         const prefectureKanji = placeData.prefecture.pname;
         return this.convertKanjiToAlphabet(prefectureKanji);
