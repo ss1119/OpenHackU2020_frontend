@@ -1,0 +1,72 @@
+.popup_from_map {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.popup_inner_from_map {
+  /* addpage */
+  position: absolute;
+  width: 95%;
+  height: 60%;
+  left: 2.5%;
+  top: 150px;
+
+  background: #ffffff;
+  border: 2px solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+}
+.post_list_container {
+  overflow: scroll;
+  width: 100%;
+  height: 75%;
+  /*max-height: 450px;*/
+}
+
+.prefecture_area {
+  width: 100%;
+  height: 80px;
+  border-bottom: 2px solid;
+  border-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.prefecture_name {
+  display: inline-block;
+  margin-top: 20px;
+
+  font-family: "Trebuchet MS", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 28px;
+
+  color: #4b4b4b;
+}
+
+.buttons_area {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+}
+
+.back_button_left {
+  position: absolute;
+  bottom: 0px;
+  left: 5%;
+}
+
+.popup_buttonContainer {
+  /*TODO*/
+  position: absolute;
+  bottom: 0px;
+  right: 5%;
+}
